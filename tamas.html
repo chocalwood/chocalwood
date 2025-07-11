@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تماس با چوکال</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Vazirmatn", sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #1a1a1a, #3e2c1c);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%);
+      z-index: 1;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      color: #ffcc66;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(255, 204, 102, 0.5);
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #ffcc66, transparent);
+      border-radius: 50%;
+      filter: blur(1px);
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    
+    .contact-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 204, 102, 0.2);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(255, 204, 102, 0.2);
+      border-color: rgba(255, 204, 102, 0.4);
+    }
+    
+    .contact-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #ffcc66;
+      text-shadow: 0 0 10px rgba(255, 204, 102, 0.5);
+    }
+    
+    .contact-title {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #ffcc66;
+    }
+    
+    .contact-info {
+      font-size: 1.2rem;
+      position: relative;
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .phone-number {
+      background: rgba(255, 204, 102, 0.1);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 5px 0;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .phone-number::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255, 204, 102, 0) 0%,
+        rgba(255, 204, 102, 0.1) 50%,
+        rgba(255, 204, 102, 0) 100%
+      );
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) rotate(30deg); }
+    }
+    
+    .phone-number:hover {
+      background: rgba(255, 204, 102, 0.2);
+      transform: scale(1.05);
+    }
+    
+    .email {
+      color: #ffcc66;
+      text-decoration: none;
+      border-bottom: 1px dashed #ffcc66;
+      transition: all 0.3s ease;
+    }
+    
+    .email:hover {
+      color: #fff;
+      border-bottom-color: #fff;
+    }
+    
+    .instagram {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .instagram:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(225, 48, 108, 0.5);
+    }
+    
+    .instagram-icon {
+      margin-left: 8px;
+      font-size: 1.5rem;
+    }
+    
+    /* ستاره‌های متحرک */
+    .star {
+      position: absolute;
+      background-color: #fff;
+      border-radius: 50%;
+      filter: blur(0.5px);
+      animation: float 6s infinite ease-in-out;
+      z-index: 1;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+        opacity: 1;
+      }
+    }
+    
+    /* دکمه برگشت */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 204, 102, 0.2);
+      color: #ffcc66;
+      border: 1px solid rgba(255, 204, 102, 0.4);
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      background: rgba(255, 204, 102, 0.3);
+      transform: translateY(-3px);
+    }
+    
+    /* واکنش‌گرا */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- پس‌زمینه و افکت‌ها -->
+  <div class="overlay"></div>
+  
+  <!-- ستاره‌های متحرک -->
+  <div id="stars-container"></div>
+  
+  <!-- دکمه برگشت -->
+  <a href="index.html" class="back-btn">← برگشت</a>
+  
+  <div class="container">
+    <header>
+      <h1>تماس با چوکال</h1>
+      <p>هر زمان که نیاز به مشاوره دارید، با ما در ارتباط باشید</p>
+    </header>
+    
+    <div class="contact-grid">
+      <!-- تماس تلفنی -->
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <h2 class="contact-title">تماس تلفنی</h2>
+        <div class="contact-info">
+          <a href="tel:+989386908288" class="phone-number">+98 938 690 8288</a>
+          <a href="tel:+989338894662" class="phone-number">+98 933 889 4662</a>
+        </div>
+      </div>
+      
+      <!-- ایمیل -->
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <h2 class="contact-title">ایمیل</h2>
+        <div class="contact-info">
+          <a href="mailto:mhmdrdag42@gmail.com" class="email">mhmdrdag42@gmail.com</a>
+        </div>
+      </div>
+      
+      <!-- اینستاگرام -->
+      <div class="contact-card">
+        <div class="contact-icon">📷</div>
+        <h2 class="contact-title">اینستاگرام</h2>
+        <div class="contact-info">
+          <a href="https://instagram.com/chocal_wood" target="_blank" class="instagram">
+            @chocal_wood
+            <span class="instagram-icon">📸</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ایجاد ستاره‌های متحرک
+    function createStars() {
+      const container = document.getElementById('stars-container');
+      const starCount = 20;
+      
+      for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        // اندازه تصادفی بین 3 تا 8 پیکسل
+        const size = Math.random() * 5 + 3;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        
+        // موقعیت تصادفی در صفحه
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        
+        // شفافیت تصادفی
+        star.style.opacity = Math.random() * 0.5 + 0.3;
+        
+        // مدت زمان انیمیشن متفاوت برای هر ستاره
+        star.style.animationDuration = `${Math.random() * 5 + 5}s`;
+        star.style.animationDelay = `${Math.random() * 5}s`;
+        
+        container.appendChild(star);
+      }
+    }
+    
+    // افکت نورانی برای شماره‌ها
+    function initPhoneShine() {
+      const phoneNumbers = document.querySelectorAll('.phone-number');
+      
+      phoneNumbers.forEach(number => {
+        // ایجاد یک عنصر جدید برای افکت نور
+        const shine = document.createElement('div');
+        shine.classList.add('shine-effect');
+        number.appendChild(shine);
+        
+        // تنظیم موقعیت نور بر اساس موقعیت ماوس
+        number.addEventListener('mousemove', (e) => {
+          const rect = number.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          
+          shine.style.background = `radial-gradient(circle at ${x}px ${y}px, 
+            rgba(255, 204, 102, 0.8), transparent 80%)`;
+        });
+        
+        number.addEventListener('mouseleave', () => {
+          shine.style.background = 'none';
+        });
+      });
+    }
+    
+    // اجرای اسکریپت‌ها پس از لود صفحه
+    window.addEventListener('load', () => {
+      createStars();
+      initPhoneShine();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محصولات چوکال</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet">
+  <script src="language.js"></script>
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Vazirmatn", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background: linear-gradient(120deg, #2b1d0e, #1c0e04);
+      color: white;
+      min-height: 100vh;
+      padding: 50px 20px 100px;
+      transition: all 0.5s ease;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .header h1 {
+      color: #ffcc66;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(255,204,102,0.3);
+    }
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .nav-btn {
+      background: rgba(255, 204, 102, 0.2);
+      border: 1px solid #ffcc66;
+      color: #ffcc66;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(255, 204, 102, 0.2);
+    }
+    
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+    
+    .nav-btn:hover::before {
+      left: 100%;
+    }
+    
+    .nav-btn:hover {
+      background: #ffcc66;
+      color: #1c0e04;
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 204, 102, 0.4);
+    }
+    
+    .nav-btn:active {
+      transform: translateY(-1px) scale(0.98);
+      transition: all 0.1s ease;
+    }
+    
+    .nav-btn.active {
+      background: #ffcc66;
+      color: #1c0e04;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 204, 102, 0.3);
+    }
+    
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .product-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      font-size: 1.2rem;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 204, 102, 0.1), rgba(255, 204, 102, 0.05));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .product-card:hover::before {
+      opacity: 1;
+    }
+    
+    .product-card:hover {
+      background: rgba(255, 204, 102, 0.1);
+      transform: translateY(-8px) scale(1.02);
+      color: #ffcc66;
+      box-shadow: 0 15px 35px rgba(255,204,102,0.3);
+      border-color: rgba(255, 204, 102, 0.3);
+    }
+    
+    .product-card:active {
+      transform: translateY(-3px) scale(0.98);
+      transition: all 0.1s ease;
+    }
+    
+    .product-card .product-link {
+      position: relative;
+      z-index: 2;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    
+    .favorite-btn {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ccc;
+      font-size: 1.4rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      backdrop-filter: blur(10px);
+    }
+    
+    .favorite-btn:hover {
+      transform: scale(1.15) rotate(10deg);
+      background: rgba(255, 107, 107, 0.2);
+      color: #ff6b6b;
+      box-shadow: 0 0 20px rgba(255, 107, 107, 0.4);
+    }
+    
+    .favorite-btn:active {
+      transform: scale(0.9) rotate(5deg);
+      transition: all 0.1s ease;
+    }
+    
+    .favorite-btn.active {
+      color: #ff6b6b;
+      background: rgba(255, 107, 107, 0.2);
+      border-color: #ff6b6b;
+      animation: heartbeat 0.6s ease;
+    }
+    
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      30% { transform: scale(1.3); }
+      60% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    .favorites-section {
+      display: none;
+      max-width: 1100px;
+      margin: 0 auto;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    .favorites-section.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .favorites-panel {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .favorites-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      color: #ffcc66;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+    
+    .favorites-count {
+      background: #ffcc66;
+      color: #1c0e04;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      min-width: 20px;
+      text-align: center;
+    }
+    
+    .empty-favorites {
+      text-align: center;
+      color: #ccc;
+      margin-top: 50px;
+      font-size: 1.1rem;
+    }
+    
+    .chat-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #ffcc66;
+      color: #1c0e04;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(255,204,102,0.3);
+      z-index: 100;
+    }
+    
+    .chat-btn:hover {
+      background: #e6b84d;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255,204,102,0.4);
+    }
+    
+    .products-section {
+      display: block;
+    }
+    
+    .products-section.hidden {
+      display: none;
+    }
+    
+    /* انیمیشن صفحه */
+    .page-transition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #1c0e04;
+      z-index: 1000;
+      transform: translateY(100%);
+    }
+    
+    .language-switcher {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #ffcc66;
+      font-size: 14px;
+      z-index: 10;
+      background: rgba(0,0,0,0.5);
+      padding: 8px 15px;
+      border-radius: 20px;
+    }
+    
+    .language-switcher span {
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .language-switcher span:hover {
+      text-shadow: 0 0 10px rgba(255,204,102,0.5);
+    }
+    
+    /* استایل جدید برای کارت‌های محصولات با عکس */
+    .product-card.with-image {
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 15px;
+    }
+    
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
+    }
+    
+    .product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+    
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      margin-top: auto;
+    }
+    
+    .favorite-product-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 15px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .favorite-product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 204, 102, 0.1), rgba(255, 204, 102, 0.05));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .favorite-product-card:hover::before {
+      opacity: 1;
+    }
+    
+    .favorite-product-card:hover {
+      background: rgba(255, 204, 102, 0.1);
+      transform: translateY(-8px) scale(1.02);
+      color: #ffcc66;
+      box-shadow: 0 15px 35px rgba(255,204,102,0.3);
+      border-color: rgba(255, 204, 102, 0.3);
+    }
+    
+    .favorite-product-card:hover .product-image {
+      transform: scale(1.05);
+    }
+    
+    @media (max-width: 768px) {
+      .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .back-btn {
+        position: static;
+        margin-bottom: 20px;
+      }
+      
+      .header {
+        margin-top: 20px;
+      }
+      
+      .product-card.with-image,
+      .favorite-product-card {
+        height: 280px;
+      }
+      
+      .product-image {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-transition" id="pageTransition"></div>
+  
+  <a href="index.html" class="back-btn">🏠 برگشت به صفحه اصلی</a>
+  
+  <div class="header">
+    <h1>چوکال</h1>
+    <div class="nav-buttons">
+      <button class="nav-btn active" onclick="showProducts()">محصولات</button>
+      <button class="nav-btn" onclick="showFavorites()">لیست علاقه‌مندی‌ها (<span id="favoriteCount">0</span>)</button>
+    </div>
+  </div>
+  
+  <div class="products-section" id="productsSection">
+    <div class="product-grid">
+      <div class="product-card" data-product="bed">
+        <button class="favorite-btn" onclick="toggleFavorite('bed', this)">♡</button>
+        <a href="bed.html" class="product-link">🛏 سرویس خواب</a>
+      </div>
+      
+      <div class="product-card" data-product="tv">
+        <button class="favorite-btn" onclick="toggleFavorite('tv', this)">♡</button>
+        <a href="tv.html" class="product-link">📺️ میز تلویزیون</a>
+      </div>
+      
+      <div class="product-card" data-product="mirror">
+        <button class="favorite-btn" onclick="toggleFavorite('mirror', this)">♡</button>
+        <a href="mirror.html" class="product-link">🪑 آینه کنسول</a>
+      </div>
+      
+      <div class="product-card" data-product="jak">
+        <button class="favorite-btn" onclick="toggleFavorite('jak', this)">♡</button>
+        <a href="jak.html" class="product-link">👞 جاکفشی</a>
+      </div>
+      
+      <div class="product-card" data-product="sofa">
+        <button class="favorite-btn" onclick="toggleFavorite('sofa', this)">♡</button>
+        <a href="sofa.html" class="product-link">🛋️ جلو مبلی</a>
+      </div>
+      
+      <div class="product-card" data-product="deco">
+        <button class="favorite-btn" onclick="toggleFavorite('deco', this)">♡</button>
+        <a href="deco.html" class="product-link">❤️ محصولات تزیینی</a>
+      </div>
+      
+      <div class="product-card" data-product="sofaes">
+        <button class="favorite-btn" onclick="toggleFavorite('sofaes', this)">♡</button>
+        <a href="sofaes.html" class="product-link">🏠 مبل استیل</a>
+      </div>
+      
+      <div class="product-card" data-product="ayne">
+        <button class="favorite-btn" onclick="toggleFavorite('ayne', this)">♡</button>
+        <a href="ayne.html" class="product-link">❤️ آیینه قدی</a>
+      </div>
+      
+      <div class="product-card" data-product="safar">
+        <button class="favorite-btn" onclick="toggleFavorite('safar', this)">♡</button>
+        <a href="sofar.html" class="product-link">🛋️ مبل راحتی</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="favorites-section" id="favoritesSection">
+    <div class="favorites-panel">
+      <div class="favorites-header">
+        <span>⭐</span>
+        <span>علاقه‌مندی‌ها</span>
+        <span class="favorites-count" id="favoritesCount">0</span>
+      </div>
+    </div>
+    
+    <div class="product-grid" id="favoritesList">
+      <div class="empty-favorites">
+        <p>هنوز هیچ محصولی به لیست علاقه‌مندی‌ها اضافه نکرده‌اید</p>
+        <p>❤️</p>
+      </div>
+    </div>
+  </div>
+  
+  <button class="chat-btn" onclick="openChat()">💬 چت با ما</button>
+  
+  <script>
+    let favorites = [];
+    
+    // تعریف نام محصولات و مسیر عکس‌ها
+    const productData = {
+      bed: {
+        name: '🛏 سرویس خواب',
+        image: 'images/bed.jpg', // مسیر عکس سرویس خواب
+        link: 'bed.html'
+      },
+      tv: {
+        name: '📺️ میز تلویزیون',
+        image: 'images/tv.jpg', // مسیر عکس میز تلویزیون
+        link: 'tv.html'
+      },
+      mirror: {
+        name: '🪑 آینه کنسول',
+        image: 'images/mirror.jpg', // مسیر عکس آینه کنسول
+        link: 'mirror.html'
+      },
+      jak: {
+        name: '👞 جاکفشی',
+        image: 'images/jak.jpg', // مسیر عکس جاکفشی
+        link: 'jak.html'
+      },
+      sofa: {
+        name: '🛋️ جلو مبلی',
+        image: 'images/sofa.jpg', // مسیر عکس جلو مبلی
+        link: 'sofa.html'
+      },
+      deco: {
+        name: '❤️ محصولات تزیینی',
+        image: 'images/deco.jpg', // مسیر عکس محصولات تزیینی
+        link: 'deco.html'
+      },
+      sofaes: {
+        name: '🏠 مبل استیل',
+        image: 'images/sofaes.jpg', // مسیر عکس مبل استیل
+        link: 'sofaes.html'
+      },
+      ayne: {
+        name: '❤️ آیینه قدی',
+        image: 'images/ayne.jpg', // مسیر عکس آیینه قدی
+        link: 'ayne.html'
+      },
+      safar: {
+        name: '🛋️ مبل راحتی',
+        image: 'images/safar.jpg', // مسیر عکس مبل راحتی
+        link: 'sofar.html'
+      }
+    };
+    
+    // بارگذاری علاقه‌مندی‌ها از localStorage
+    function loadFavorites() {
+      const saved = JSON.parse(localStorage.getItem('favorites') || '[]');
+      favorites = saved;
+      updateFavoriteButtons();
+      updateFavoriteCount();
+    }
+    
+    // ذخیره علاقه‌مندی‌ها
+    function saveFavorites() {
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+    
+    // تغییر وضعیت علاقه‌مندی
+    function toggleFavorite(productId, button) {
+      const index = favorites.indexOf(productId);
+      if (index > -1) {
+        favorites.splice(index, 1);
+        button.classList.remove('active');
+        button.innerHTML = '♡';
+      } else {
+        favorites.push(productId);
+        button.classList.add('active');
+        button.innerHTML = '♥';
+        // افکت انیمیشن برای اضافه کردن
+        button.style.animation = 'heartbeat 0.6s ease';
+        setTimeout(() => {
+          button.style.animation = '';
+        }, 600);
+      }
+      saveFavorites();
+      updateFavoriteCount();
+      updateFavoritesList();
+    }
+    
+    // بروزرسانی دکمه‌های علاقه‌مندی
+    function updateFavoriteButtons() {
+      document.querySelectorAll('.favorite-btn').forEach(btn => {
+        const productCard = btn.closest('.product-card');
+        const productId = productCard.dataset.product;
+        if (favorites.includes(productId)) {
+          btn.classList.add('active');
+          btn.innerHTML = '♥';
+        }
+      });
+    }
+    
+    // بروزرسانی شمارشگر علاقه‌مندی‌ها
+    function updateFavoriteCount() {
+      document.getElementById('favoriteCount').textContent = favorites.length;
+      const favoritesCountElement = document.getElementById('favoritesCount');
+      if (favoritesCountElement) {
+        favoritesCountElement.textContent = favorites.length;
+      }
+    }
+    
+    // نمایش محصولات
+    function showProducts() {
+      document.querySelector('.nav-btn.active').classList.remove('active');
+      document.querySelector('.nav-btn').classList.add('active');
+      document.getElementById('productsSection').classList.remove('hidden');
+      document.getElementById('favoritesSection').classList.remove('active');
+    }
+    
+    // نمایش علاقه‌مندی‌ها
+    function showFavorites() {
+      document.querySelector('.nav-btn.active').classList.remove('active');
+      document.querySelectorAll('.nav-btn')[1].classList.add('active');
+      document.getElementById('productsSection').classList.add('hidden');
+      document.getElementById('favoritesSection').classList.add('active');
+      updateFavoritesList();
+    }
+    
+    // بروزرسانی لیست علاقه‌مندی‌ها با عکس
+    function updateFavoritesList() {
+      const favoritesList = document.getElementById('favoritesList');
+      
+      if (favorites.length === 0) {
+        favoritesList.innerHTML = `
+          <div class="empty-favorites">
+            <p>هنوز هیچ محصولی به لیست علاقه‌مندی‌ها اضافه نکرده‌اید</p>
+            <p>❤️</p>
+          </div>
+        `;
+      } else {
+        favoritesList.innerHTML = favorites.map(productId => {
+          const product = productData[productId];
+          return `
+            <div class="favorite-product-card" data-product="${productId}">
+              <button class="favorite-btn active" onclick="toggleFavorite('${productId}', this)">♥</button>
+              <img src="${product.image}" alt="${product.name}" class="product-image" 
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <div class="product-title" style="display: none;">${product.name}</div>
+              <a href="${product.link}" class="product-link">
+                <div class="product-title">${product.name}</div>
+              </a>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+    
+    // باز کردن چت
+    function openChat() {
+      alert('چت با ما به زودی راه‌اندازی خواهد شد!');
+      // اینجا می‌توانید لینک به سیستم چت یا واتساپ اضافه کنید
+       window.open('https://wa.me/YOUR_PHONE_NUMBER', '_blank');
+    }
+    
+    // افکت انتقال صفحه
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('product-link') || e.target.closest('.product-card') || e.target.closest('.favorite-product-card')) {
+        let link;
+        if (e.target.classList.contains('product-link')) {
+          link = e.target;
+        } else if (e.target.closest('.product-card')) {
+          link = e.target.closest('.product-card').querySelector('.product-link');
+        } else if (e.target.closest('.favorite-product-card')) {
+          link = e.target.closest('.favorite-product-card').querySelector('.product-link');
+        }
+        
+        if (link && link.getAttribute('href')) {
+          e.preventDefault();
+          
+          // افکت کلیک روی کارت
+          const card = e.target.closest('.product-card') || e.target.closest('.favorite-product-card');
+          if (card) {
+            card.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+              card.style.transform = '';
+            }, 150);
+          }
+          
+          const pageTransition = document.getElementById('pageTransition');
+          pageTransition.style.transition = 'transform 0.5s ease';
+          pageTransition.style.transform = 'translateY(0)';
+          
+          setTimeout(() => {
+            window.location.href = link.getAttribute('href');
+          }, 500);
+        }
+      }
+    });
+    
+    // بارگذاری اولیه
+    window.addEventListener('load', () => {
+      loadFavorites();
+    });
+  </script>
+</body>
+</html>
