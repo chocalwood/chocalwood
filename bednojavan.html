@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+  <html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سرویس خواب نوجوان چوکال</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shared.css">
+    <style>
+      /* Styles specific to bed.html */
+      body {
+        padding: 50px 20px;
+      }
+      h1 { text-align: center; color: #fccc6c; margin-bottom: 40px; text-shadow: 0 0 10px rgba(255,204,102,0.3); }
+      .gallery {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+      .back-buttons {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .back-btn {
+        padding: 10px 15px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+      .products-btn { background: rgba(255,204,102,0.2); color: #ffcc66; border: 1px solid rgba(255,204,102,0.4); }
+      .home-btn { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
+      .back-btn:hover { transform: translateY(-3px); }
+      .product-card {
+        background: rgba(255,255,255,0.05);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease;
+      }
+      .product-card:hover { transform: translateY(-5px); }
+      .product-image-container {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .product-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .product-image:hover { transform: scale(1.05); }
+      .product-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        padding: 20px;
+        color: white;
+        transform: translateY(100%);
+        transition: transform 0.3s ease;
+      }
+      .product-card:hover .product-overlay { transform: translateY(0); }
+      .product-title { font-size: 1.2rem; margin-bottom: 5px; color: #ffcc66; }
+      .product-type { font-size: 0.9rem; color: #ccc; }
+      .product-fallback {
+        width: 100%;
+        height: 250px;
+        background: linear-gradient(45deg, #8B4513, #D2691E);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.1rem;
+        text-align: center;
+        line-height: 1.6;
+        cursor: pointer;
+      }
+      .product-actions {
+        display: flex;
+        padding: 15px;
+        background: rgba(0,0,0,0.3);
+        gap: 10px;
+      }
+      .action-btn {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px;
+        background: transparent;
+        border: none;
+        color: #ffcc66;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+      }
+      .action-btn.like { background: rgba(255, 107, 107, 0.1); }
+      .action-btn.liked { background: rgba(255, 107, 107, 0.3); color: #ff6b6b; }
+      .action-btn.comment { background: rgba(102, 204, 255, 0.1); }
+      .action-btn:hover { transform: scale(1.05); }
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .modal.active { opacity: 1; pointer-events: auto; }
+      .modal-content { position: relative; max-width: 90%; max-height: 90%; }
+      .modal-img {
+        max-width: 100%;
+        max-height: 80vh;
+        border-radius: 10px;
+        cursor: zoom-in;
+        transition: transform 0.3s ease;
+      }
+      .modal-img.zoomed { transform: scale(1.5); cursor: zoom-out; }
+      .modal-close {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        background: #ff6b6b;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 20px;
+        border: none;
+      }
+      .modal-actions {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      .modal-like-btn {
+        background: rgba(255, 107, 107, 0.2);
+        color: #ff6b6b;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .modal-like-btn.liked { background: rgba(255, 107, 107, 0.5); color: white; }
+      .modal-like-btn:hover { transform: translateY(-3px); }
+    </style>
+  </head>
+  <body>
+    <div class="back-buttons">
+      <a href="products.html" class="back-btn products-btn">← محصولات</a>
+      <a href="index.html" class="back-btn home-btn">🏠 صفحه اصلی</a>
+    </div>
+
+
+    <h1>سرویس خواب تک نفره (نوجوان)</h1>
+
+    <div class="gallery" id="gallery"></div>
+
+    <div class="modal" id="imageModal">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <img src="" alt="" class="modal-img" id="modalImage">
+        <div class="modal-actions">
+          <button class="modal-like-btn" id="modalLikeBtn">❤️ لایک</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="products-db.js"></script>
+    <script src="language.js"></script>
+    <script src="shared.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          // --- CONFIG & STATE ---
+          const productKeys = ['bednojavan1', 'bednojavan2', 'bednojavan3', 'bednojavan4', 'bednojavan5', 'bednojavan6'];
+          const products = productKeys.map(key => allProducts[key]).filter(Boolean);
+          let favorites = [];
+          let currentProduct = null;
+
+          // --- DOM ELEMENTS ---
+          const gallery = document.getElementById('gallery');
+          const modal = document.getElementById('imageModal');
+          const modalImg = document.getElementById('modalImage');
+          const modalLikeBtn = document.getElementById('modalLikeBtn');
+          const modalCloseBtn = document.querySelector('.modal-close');
+
+          // --- HELPERS ---
+          const getLang = () => localStorage.getItem('selectedLanguage') || 'fa';
+          const getTranslations = () => translations[getLang()];
+
+          // --- FAVORITES MANAGEMENT ---
+          const loadFavorites = () => {
+              favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+          };
+
+          const saveFavorites = () => {
+              localStorage.setItem('favorites', JSON.stringify(favorites));
+              if (window.updateGlobalFavorites) {
+                  window.updateGlobalFavorites();
+              }
+          };
+
+          const toggleFavorite = (productId) => {
+              const index = favorites.indexOf(productId);
+              if (index > -1) {
+                  favorites.splice(index, 1);
+              } else {
+                  favorites.push(productId);
+              }
+              saveFavorites();
+          };
+
+          // --- UI RENDERING & UPDATES ---
+          const createProductCard = (product) => {
+              const t = getTranslations();
+              const translatedType = t.productTypeWood[product.type] || product.type;
+              const isLiked = favorites.includes(product.id);
+
+              return `
+                  <div class="product-card" data-product-id="${product.id}">
+                      <div class="product-image-container" data-action="open-modal">
+                          <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                          <div class="product-fallback" style="display: none;">🛏️<br>${product.name}<br><small>${t.imageNotFound}</small></div>
+                          <div class="product-overlay">
+                              <div class="product-title">${product.name}</div>
+                              <div class="product-type">${translatedType}</div>
+                          </div>
+                      </div>
+                      <div class="product-actions">
+                          <button class="action-btn like ${isLiked ? 'liked' : ''}" data-action="toggle-like">
+                              ❤️ <span>${isLiked ? t.liked : t.like}</span>
+                          </button>
+                          <button class="action-btn comment" data-action="show-comment">
+                              💬 <span>نظرات</span>
+                          </button>
+                      </div>
+                  </div>
+              `;
+          };
+
+          const renderProducts = () => {
+              loadFavorites();
+              gallery.innerHTML = products.map(createProductCard).join('');
+          };
+
+          const updateCardLikeButton = (productId) => {
+              const cardButton = gallery.querySelector(`.product-card[data-product-id='${productId}'] .action-btn.like`);
+              if (cardButton) {
+                  const isLiked = favorites.includes(productId);
+                  const t = getTranslations();
+                  cardButton.classList.toggle('liked', isLiked);
+                  cardButton.querySelector('span').textContent = isLiked ? t.liked : t.like;
+              }
+          };
+
+          const updateModalLikeButton = () => {
+              if (!currentProduct) return;
+              const isLiked = favorites.includes(currentProduct.id);
+              const t = getTranslations();
+              modalLikeBtn.classList.toggle('liked', isLiked);
+              modalLikeBtn.textContent = `❤️ ${isLiked ? t.liked : t.like}`;
+          };
+
+          // --- MODAL ---
+          const openModal = (productId) => {
+              currentProduct = products.find(p => p.id === productId);
+              if (currentProduct) {
+                  modalImg.src = currentProduct.image;
+                  modalImg.alt = currentProduct.name;
+                  modal.classList.add('active');
+                  updateModalLikeButton();
+              }
+          };
+
+          const closeModal = () => {
+              modal.classList.remove('active');
+              modalImg.classList.remove('zoomed');
+              currentProduct = null;
+          };
+
+          // --- EVENT HANDLERS ---
+          const handleGalleryClick = (event) => {
+              const target = event.target;
+              const actionElement = target.closest('[data-action]');
+              if (!actionElement) return;
+
+              const action = actionElement.dataset.action;
+              const card = actionElement.closest('.product-card');
+              const productId = card ? card.dataset.productId : null;
+
+              switch (action) {
+                  case 'toggle-like':
+                      event.stopPropagation();
+                      if (productId) {
+                          toggleFavorite(productId);
+                          updateCardLikeButton(productId);
+                          if (currentProduct && currentProduct.id === productId) {
+                             updateModalLikeButton();
+                          }
+                      }
+                      break;
+                  case 'open-modal':
+                      if (productId) {
+                          openModal(productId);
+                      }
+                      break;
+                  case 'show-comment':
+                      const t = getTranslations();
+                      alert(t.commentSystemSoon);
+                      break;
+              }
+          };
+
+          const handleModalLikeClick = () => {
+              if (currentProduct) {
+                  toggleFavorite(currentProduct.id);
+                  updateCardLikeButton(currentProduct.id);
+                  updateModalLikeButton();
+              }
+          };
+
+          // --- INITIALIZATION ---
+          gallery.addEventListener('click', handleGalleryClick);
+          modalLikeBtn.addEventListener('click', handleModalLikeClick);
+          modalCloseBtn.addEventListener('click', closeModal);
+          modal.addEventListener('click', (e) => {
+              if (e.target === modal) closeModal();
+          });
+          modalImg.addEventListener('click', () => modalImg.classList.toggle('zoomed'));
+
+          // Initial Render
+          renderProducts();
+          
+          // Make render function available for language switcher
+          window.renderBedProducts = renderProducts;
+      });
+    </script>
+  </body>
+  </html>

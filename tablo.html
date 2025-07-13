@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>محصولات چوکال</title>
+  <title>اکسسوری و تابلو چوکال</title>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
   <style>
@@ -199,13 +199,13 @@
 
   </style>
 </head>
-<body>
+<body class="tablo-page">
   <div class="page-transition" id="pageTransition"></div>
   
   <a href="index.html" class="back-btn">🏠 برگشت به صفحه اصلی</a>
   
   <div class="header">
-    <h1>چوکال</h1>
+    <h1>اکسسوری و تابلو</h1>
     <div class="nav-buttons">
       <button class="nav-btn active" onclick="showProducts()">محصولات</button>
     </div>
@@ -214,65 +214,7 @@
   
   <div class="products-section" id="productsSection">
     <div class="product-grid">
-      <div class="product-card" data-product="bed">
-        <button class="favorite-btn" onclick="toggleFavorite('bed', this)">♡</button>
-        <a href="bed.html" class="product-link">🛏 سرویس خواب</a>
-      </div>
-      
-      <div class="product-card" data-product="tv">
-        <button class="favorite-btn" onclick="toggleFavorite('tv', this)">♡</button>
-        <a href="tv.html" class="product-link">📺️ میز تلویزیون</a>
-      </div>
-      
-      <div class="product-card" data-product="mirror">
-        <button class="favorite-btn" onclick="toggleFavorite('mirror', this)">♡</button>
-        <a href="mirror.html" class="product-link">🪑 آینه کنسول</a>
-      </div>
-      
-      <div class="product-card" data-product="jak">
-        <button class="favorite-btn" onclick="toggleFavorite('jak', this)">♡</button>
-        <a href="jak.html" class="product-link">👞 جاکفشی</a>
-      </div>
-      
-      <div class="product-card" data-product="sofa">
-        <button class="favorite-btn" onclick="toggleFavorite('sofa', this)">♡</button>
-        <a href="sofa.html" class="product-link">🛋️ جلو مبلی</a>
-      </div>
-      
-      <div class="product-card" data-product="deco">
-        <button class="favorite-btn" onclick="toggleFavorite('deco', this)">♡</button>
-        <a href="deco.html" class="product-link">❤️ محصولات تزیینی</a>
-      </div>
-      
-      <div class="product-card" data-product="sofaes">
-        <button class="favorite-btn" onclick="toggleFavorite('sofaes', this)">♡</button>
-        <a href="sofaes.html" class="product-link">🏠 مبل استیل</a>
-      </div>
-      
-      <div class="product-card" data-product="ayne">
-        <button class="favorite-btn" onclick="toggleFavorite('ayne', this)">♡</button>
-        <a href="ayne.html" class="product-link">❤️ آیینه قدی</a>
-      </div>
-      
-      <div class="product-card" data-product="safar">
-        <button class="favorite-btn" onclick="toggleFavorite('safar', this)">♡</button>
-        <a href="sofar.html" class="product-link">🛋️ مبل راحتی</a>
-      </div>
-      
-      <div class="product-card" data-product="bednojavan">
-        <button class="favorite-btn" onclick="toggleFavorite('bednojavan', this)">♡</button>
-        <a href="bednojavan.html" class="product-link">🛏️ سرویس خواب تک نفره (نوجوان)</a>
-      </div>
-      
-      <div class="product-card" data-product="jahaz">
-        <button class="favorite-btn" onclick="toggleFavorite('jahaz', this)">♡</button>
-        <a href="jahaz.html" class="product-link">🎁چوکال جهیزیه</a>
-      </div>
-      
-      <div class="product-card" data-product="tablo">
-        <button class="favorite-btn" onclick="toggleFavorite('tablo', this)">♡</button>
-        <a href="tablo.html" class="product-link">🖼️ اکسسوری و تابلو</a>
-      </div>
+      <!-- Products will be loaded here by JavaScript -->
     </div>
   </div>
   <div id="no-results">
@@ -376,7 +318,39 @@
        }
    });
 
+    function generateProductCards() {
+        const productGrid = document.querySelector('#productsSection .product-grid');
+        productGrid.innerHTML = ''; // Clear existing products
+        const lang = localStorage.getItem('selectedLanguage') || 'fa';
+        const t = translations[lang];
+
+        for (const productId in allProducts) {
+            if (productId.startsWith('tablo') && allProducts[productId].id) {
+                const product = allProducts[productId];
+                if(product.type === 'دسته بندی') continue;
+
+                const productName = t.productNames[product.id] || product.name;
+                const productType = t.productTypeArt[product.type] || product.type;
+                
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.dataset.product = product.id;
+
+                card.innerHTML = `
+                    <button class="favorite-btn" onclick="toggleFavorite('${product.id}', this)">♡</button>
+                    <a href="#" class="product-link" onclick="openProductModal('${product.id}')">
+                        <h3>${productName}</h3>
+                        <p>${productType}</p>
+                    </a>
+                `;
+                productGrid.appendChild(card);
+            }
+        }
+    }
+
    window.addEventListener('load', () => {
+       const savedLang = localStorage.getItem('selectedLanguage') || 'fa';
+       switchLanguage(savedLang); // This will trigger translation
        loadFavorites();
        handleSearch();
    });
@@ -401,7 +375,7 @@
        let visibleCount = 0;
 
        productCards.forEach(card => {
-           const productName = card.querySelector('.product-link').textContent.trim().toLowerCase();
+           const productName = card.querySelector('h3').textContent.trim().toLowerCase();
            if (productName.includes(normalizedQuery)) {
                card.style.display = 'block';
                visibleCount++;

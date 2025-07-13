@@ -1,40 +1,29 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>صنعت چوبی چوکال</title>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script src="language.js"></script>
-  
+  <link rel="stylesheet" href="shared.css">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Vazirmatn", "Tahoma", sans-serif;
-    }
-
+    /* Styles specific to index.html */
     html, body {
       height: 100%;
-      overflow: hidden;
     }
-
-    /* بهبود کانتینر بک‌گراند */
     .bg-container {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: -1;
     }
-
     .bg {
       background-image: url('images/bg1.jpg');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
       filter: blur(2px) brightness(0.4);
       position: absolute;
       top: 0;
@@ -42,16 +31,9 @@
       width: 100%;
       height: 100%;
       opacity: 1;
-      transition: none;
     }
-
-    .bg.active {
-      opacity: 1;
-    }
-
-    /* افکت overlay برای بهتر شدن متن */
     .overlay {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -59,10 +41,9 @@
       background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(139,69,19,0.3));
       z-index: 0;
     }
-
     .welcome-box {
       background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(139,69,19,0.4));
-      padding: 50px;
+      padding: 30px;
       border-radius: 25px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(15px);
@@ -71,24 +52,18 @@
       position: relative;
       z-index: 1;
       text-align: center;
+      max-width: 90%;
+      width: 100%;
       max-width: 650px;
-      margin: auto;
+      margin: 0 auto;
       top: 50%;
       transform: translateY(-50%);
       animation: fadeInUp 1s ease-out;
     }
-
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(-50%);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(-50%); }
     }
-
     h1 {
       font-size: 2.8rem;
       margin-bottom: 25px;
@@ -97,16 +72,10 @@
       font-weight: bold;
       animation: glow 2s infinite alternate;
     }
-
     @keyframes glow {
-      from {
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 20px rgba(255,204,102,0.3);
-      }
-      to {
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 30px rgba(255,204,102,0.5);
-      }
+      from { text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 20px rgba(255,204,102,0.3); }
+      to { text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 30px rgba(255,204,102,0.5); }
     }
-
     p {
       font-size: 1.3rem;
       margin-bottom: 35px;
@@ -114,7 +83,6 @@
       text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
       line-height: 1.6;
     }
-
     a.button {
       text-decoration: none;
       display: inline-block;
@@ -129,7 +97,6 @@
       position: relative;
       overflow: hidden;
     }
-
     a.button:before {
       content: '';
       position: absolute;
@@ -140,22 +107,17 @@
       background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
       transition: left 0.6s ease;
     }
-
-    a.button:hover:before {
-      left: 100%;
-    }
-
+    a.button:hover:before { left: 100%; }
     a.button:hover {
       transform: translateY(-3px);
       box-shadow: 0 12px 35px rgba(255,204,102,0.5);
       background: linear-gradient(135deg, #f59e0b, #ffcc66);
     }
-
     .flags {
-      position: absolute;
+      position: fixed;
       bottom: 20px;
       left: 20px;
-      z-index: 2;
+      z-index: 10;
       display: flex;
       gap: 10px;
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
@@ -164,7 +126,6 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
-
     .flags img {
       width: 35px;
       height: auto;
@@ -172,18 +133,15 @@
       transition: all 0.3s ease;
       filter: brightness(0.9);
     }
-
     .flags img:hover {
       transform: scale(1.2) rotate(5deg);
       filter: brightness(1.1);
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
-
-    /* تخفیف ویژه */
     .special-offer {
-      position: absolute;
-      top: 120px;
-      right: 25px;
+      position: fixed;
+      top: 20px;
+      right: 20px;
       background: linear-gradient(135deg, #ff6b6b, #ff8e8e, #ff4757);
       color: white;
       padding: 15px 20px;
@@ -198,8 +156,8 @@
       border: 2px solid rgba(255, 255, 255, 0.3);
       min-width: 250px;
       direction: rtl;
+      transition: all 0.8s ease;
     }
-
     .special-offer::before {
       content: '🎁';
       position: absolute;
@@ -216,49 +174,29 @@
       box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
       animation: bounce 2s infinite;
     }
-
     .special-offer .offer-text {
       font-size: 18px;
       font-weight: 800;
       margin-bottom: 5px;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
-
     .special-offer .offer-subtitle {
       font-size: 14px;
       font-weight: 500;
       opacity: 0.9;
     }
-
     @keyframes sparkle {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
-      }
-      50% {
-        transform: scale(1.05);
-        box-shadow: 0 20px 40px rgba(255, 107, 107, 0.6);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
-      }
+      0% { transform: scale(1); box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4); }
+      50% { transform: scale(1.05); box-shadow: 0 20px 40px rgba(255, 107, 107, 0.6); }
+      100% { transform: scale(1); box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4); }
     }
-
     @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-      }
-      40% {
-        transform: translateY(-10px);
-      }
-      60% {
-        transform: translateY(-5px);
-      }
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
     }
-
     .top-contact {
-      position: absolute;
+      position: fixed;
       top: 20px;
       left: 20px;
       background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(139,69,19,0.3));
@@ -272,19 +210,17 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: all 0.8s ease;
     }
-
     .top-contact a {
       color: #ffcc66;
       text-decoration: none;
       transition: color 0.3s ease;
     }
-
     .top-contact a:hover {
       color: #fff;
       text-shadow: 0 0 10px rgba(255,204,102,0.5);
     }
-
     .button-wrap {
       display: flex;
       align-items: center;
@@ -292,7 +228,6 @@
       gap: 15px;
       margin-top: 25px;
     }
-
     .click-hint {
       color: #ffcc66;
       font-size: 16px;
@@ -300,22 +235,11 @@
       font-weight: bold;
       text-shadow: 0 0 10px rgba(255,204,102,0.3);
     }
-
     @keyframes pulse {
-      0% { 
-        opacity: 0.6; 
-        transform: translateX(0) scale(1);
-      }
-      50% { 
-        opacity: 1; 
-        transform: translateX(-8px) scale(1.1);
-      }
-      100% { 
-        opacity: 0.6; 
-        transform: translateX(0) scale(1);
-      }
+      0% { opacity: 0.6; transform: translateX(0) scale(1); }
+      50% { opacity: 1; transform: translateX(-8px) scale(1.1); }
+      100% { opacity: 0.6; transform: translateX(0) scale(1); }
     }
-
     #lang-switch {
       margin-top: 8px;
       color: #ffcc66;
@@ -323,7 +247,6 @@
       text-align: left;
       direction: ltr;
     }
-
     #lang-switch span {
       cursor: pointer;
       margin: 0 5px;
@@ -331,155 +254,252 @@
       padding: 2px 5px;
       border-radius: 5px;
     }
-
     #lang-switch span:hover {
       color: #fff;
       background: rgba(255,204,102,0.2);
       transform: scale(1.05);
     }
-
-    /* افکت ذرات شناور */
-    .particles {
-      position: absolute;
+    .main-menu {
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
-      z-index: 0;
+      background: linear-gradient(135deg, #1a1a1a, #3e2c1c);
+      color: #fff;
+      z-index: 5;
+      padding: 80px 40px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+      pointer-events: none;
+      overflow-y: auto;
     }
-
-    .particle {
-      position: absolute;
+    .main-menu h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #ffcc66;
+      text-align: center;
+    }
+    .main-menu ul { list-style: none; padding: 0; text-align: center; }
+    .main-menu ul li { margin: 20px 0; font-size: 1.4rem; }
+    .main-menu ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    .main-menu ul li a:hover {
+      color: #ffcc66;
       background: rgba(255, 204, 102, 0.1);
-      border-radius: 50%;
-      animation: float 8s infinite linear;
     }
-
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
-      }
+    .main-menu.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
     }
-
-    /* بهبود responsive */
+    .hidden { display: none; }
+    body.fade-out {
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .menu-hidden {
+      opacity: 0 !important;
+      transform: translateY(-30px) !important;
+    }
     @media (max-width: 768px) {
       .welcome-box {
-        padding: 30px;
-        margin: 20px;
+        padding: 25px;
+        margin: 0 15px;
+        top: 50%;
+        max-width: 95%;
       }
-      
       h1 {
         font-size: 2.2rem;
+        margin-bottom: 20px;
       }
-      
       p {
         font-size: 1.1rem;
+        margin-bottom: 25px;
       }
-      
       .button-wrap {
         flex-direction: column;
-        gap: 10px;
+        gap: 15px;
       }
-      
-      .top-contact {
-        font-size: 12px;
-        padding: 8px 12px;
+      a.button {
+        padding: 14px 30px;
+        font-size: 1.1rem;
       }
-      
-      .special-offer {
-        top: 100px;
-        right: 15px;
-        padding: 12px 16px;
-        font-size: 14px;
-        min-width: 220px;
+      .top-contact, .special-offer, .flags {
+        position: relative;
+        width: 90%;
+        max-width: 400px;
+        margin: 15px auto;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        text-align: center;
+        z-index: 1;
       }
-      
-      .special-offer .offer-text {
-        font-size: 16px;
+      .flags {
+          justify-content: center;
       }
-      
-      .special-offer .offer-subtitle {
-        font-size: 12px;
+      #lang-switch {
+          text-align: center;
+          margin-top: 10px;
+      }
+      .main-menu {
+        padding: 60px 20px;
+      }
+      .main-menu h2 {
+        font-size: 2rem;
+      }
+      .main-menu ul li {
+        font-size: 1.2rem;
+      }
+      .search-icon {
+          right: 15px;
+          width: 50px;
+          height: 50px;
+      }
+      .search-icon svg {
+          width: 25px;
+          height: 25px;
       }
     }
+    @media (max-width: 480px) {
+      .welcome-box {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      a.button {
+        padding: 12px 25px;
+        font-size: 1rem;
+      }
+      .special-offer .offer-text {
+        font-size: 1rem;
+      }
+      .special-offer .offer-subtitle {
+        font-size: 0.8rem;
+      }
+      .flags img {
+          width: 25px;
+      }
+    }
+    .search-icon {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 204, 102, 0.1);
+      border: 1px solid rgba(255, 204, 102, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: fadeInFromLeft 1s ease-out;
+    }
+    .search-icon:hover {
+      background: rgba(255, 204, 102, 0.2);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 0 25px rgba(255, 204, 102, 0.4);
+    }
+    .search-icon svg {
+      width: 30px;
+      height: 30px;
+      fill: #ffcc66;
+      transition: transform 0.3s ease;
+    }
+    .search-icon:hover svg {
+      transform: rotate(15deg);
+    }
 
+    /* Search Overlay */
+    .search-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
 
+    .search-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-    .main-menu {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #1a1a1a, #3e2c1c);
-  color: #fff;
-  z-index: 5;
-  padding: 80px 40px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease;
-  pointer-events: none;
-}
+    .search-container {
+      position: relative;
+      width: 80%;
+      max-width: 600px;
+    }
 
-.main-menu h2 {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  color: #ffcc66;
-  text-align: center;
-}
+    #search-input {
+      width: 100%;
+      padding: 20px 60px 20px 20px;
+      font-size: 1.5rem;
+      border-radius: 50px;
+      border: 2px solid #ffcc66;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      outline: none;
+      box-shadow: 0 0 30px rgba(255, 204, 102, 0.5);
+    }
 
-.main-menu ul {
-  list-style: none;
-  padding: 0;
-  text-align: center;
-}
+    #search-input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
 
-.main-menu ul li {
-  margin: 20px 0;
-  font-size: 1.4rem;
-}
+    #search-close-btn {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #ffcc66;
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-.main-menu ul li a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+    #search-close-btn:hover {
+      transform: translateY(-50%) scale(1.2);
+    }
 
-.main-menu ul li a:hover {
-  color: #ffcc66;
-}
-
-.main-menu.show {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.hidden {
-  display: none;
-}
-
-
-
-body.fade-out {
-  opacity: 0;
-  transform: scale(0.98);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-
+    @keyframes fadeInFromLeft {
+      from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+    }
   </style>
 </head>
 <body>
@@ -493,21 +513,26 @@ body.fade-out {
   <div class="particles" id="particles"></div>
 
   <div class="welcome-box">
-    <h1>به صنعت چوبی چوکال خوش آمدید</h1>
-    <p>زیبایی را با چوب تجربه کنید ❤️</p>
+    <h1 id="main-title">به صنعت چوبی چوکال خوش آمدید</h1>
+    <p id="main-subtitle">زیبایی را با چوب تجربه کنید ❤️</p>
     <div class="button-wrap">
-        <a href="#" class="button">کیفیت را با چوکال تجربه کنید</a>
+        <a href="#" class="button" id="main-button">کیفیت را با چوکال تجربه کنید</a>
         <span id="click-text" class="click-hint">👈 کلیک کنید</span>
     </div>
   </div>
 
-  <!-- تخفیف ویژه -->
-  <div class="special-offer">
-    <div class="offer-text">تخفیف ویژه برای اولین خرید</div>
-    <div class="offer-subtitle">٪20 تخفیف + ارسال رایگان</div>
+
+  <div class="search-icon" id="search-icon" title="جستجوی محصول">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 522 522"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
   </div>
 
-  <div class="top-contact">
+  <!-- تخفیف ویژه -->
+  <div class="special-offer" id="special-offer">
+    <div class="offer-text" id="offer-text">تخفیف ویژه برای اولین خرید</div>
+    <div class="offer-subtitle" id="offer-subtitle">٪20 تخفیف + ارسال رایگان</div>
+  </div>
+
+  <div class="top-contact" id="top-contact">
     <div id="phone-text">تماس با مجموعه چوکال - <a href="tel:+989386908288">+989386908288</a></div>
     <div id="lang-switch">
       <span onclick="switchToFarsi()">🇮🇷 فارسی</span> |
@@ -528,31 +553,34 @@ body.fade-out {
     <img src="https://flagcdn.com/w40/sa.png" alt="عربستان" title="عربستان">
   </div>
 
-  <script>
-    // بهبود تغییر زبان
-    function switchToFarsi() {
-  switchLanguage('fa');
-}
+  <div id="main-menu" class="main-menu hidden">
+    <h2 id="menu-title">منوی اصلی چوکال</h2>
+    <ul>
+      <li><a href="products.html" id="products-link">محصولات</a></li>
+      <li><a href="aboutwe.html" id="about-link"> درباره ما</a></li>
+      <li><a href="tamas.html" id="contact-link">تماس با ما</a></li>
+    </ul>
+  </div>
 
-function switchToEnglish() {
-  switchLanguage('en');
-}
-
-function switchToArabic() {
-  switchLanguage('ar');
-}
-
-    // تنظیم بک‌گراند ثابت
-    const bg = document.getElementById('bg1');
+  <!-- Search Overlay -->
+  <div id="search-overlay" class="search-overlay">
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="جستجو برای محصولات...">
+      <button id="search-close-btn">&times;</button>
+    </div>
+  </div>
+ 
+   <script src="language.js"></script>
+   <script src="shared.js"></script>
+   <script>
+     // تنظیم بک‌گراند ثابت
+     const bg = document.getElementById('bg1');
     bg.style.backgroundImage = "url('images/bg1.jpg')";
-    
-    // حذف تغییر خودکار بک‌گراند
-    // setInterval(changeBackground, 4000);
 
     // ایجاد افکت ذرات شناور
     function createParticles() {
       const particlesContainer = document.getElementById('particles');
-      
+      if (!particlesContainer) return;
       for (let i = 0; i < 15; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
@@ -580,62 +608,77 @@ function switchToArabic() {
       }, 100);
     });
 
-
+    // کلیک روی دکمه اصلی
     document.querySelector('.button').addEventListener('click', function(e) {
-  e.preventDefault();
+      e.preventDefault();
 
-  // پنهان کردن صفحه‌ی خوشامدگویی با انیمیشن
-  document.querySelector('.welcome-box').style.opacity = '0';
-  document.querySelector('.welcome-box').style.transition = 'opacity 0.8s ease';
-  
-  // نمایش منو بعد از کمی تأخیر
-  setTimeout(() => {
-    document.querySelector('.welcome-box').style.display = 'none';
-    const menu = document.getElementById('main-menu');
-    menu.classList.remove('hidden');
-    setTimeout(() => {
-      menu.classList.add('show');
-    }, 50); // کمی تأخیر برای اجرای transition
-  }, 800);
-});
+      // پنهان کردن المنت‌های اضافی
+      document.getElementById('special-offer').classList.add('menu-hidden');
+      document.getElementById('top-contact').classList.add('menu-hidden');
 
+      // پنهان کردن صفحه‌ی خوشامدگویی با انیمیشن
+      document.querySelector('.welcome-box').style.opacity = '0';
+      document.querySelector('.welcome-box').style.transition = 'opacity 0.8s ease';
+      
+      // نمایش منو بعد از کمی تأخیر
+      setTimeout(() => {
+        document.querySelector('.welcome-box').style.display = 'none';
+        const menu = document.getElementById('main-menu');
+        menu.classList.remove('hidden');
+        setTimeout(() => {
+          menu.classList.add('show');
+        }, 50);
+      }, 800);
+    });
 
+    // کلیک روی لینک‌های منو
+    const menuLinks = document.querySelectorAll('#main-menu a');
+    menuLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = this.href;
+        }, 800);
+      });
+    });
 
-const productsLink = document.getElementById("products-link");
+    const searchIcon = document.getElementById('search-icon');
+    const searchOverlay = document.getElementById('search-overlay');
+    const searchInput = document.getElementById('search-input');
+    const searchCloseBtn = document.getElementById('search-close-btn');
 
-productsLink.addEventListener("click", function (e) {
-  e.preventDefault();
-  document.body.classList.add("fade-out");
-  setTimeout(() => {
-    window.location.href = this.href;
-  }, 800);
-});
+    if(searchIcon) {
+      searchIcon.addEventListener('click', function() {
+        searchOverlay.classList.add('show');
+        searchInput.focus();
+      });
+    }
 
+    if(searchCloseBtn) {
+        searchCloseBtn.addEventListener('click', function() {
+            searchOverlay.classList.remove('show');
+        });
+    }
 
+    if(searchOverlay) {
+        searchOverlay.addEventListener('click', function(e) {
+            if (e.target === searchOverlay) {
+                searchOverlay.classList.remove('show');
+            }
+        });
+    }
 
-
-
-
-
+    if(searchInput) {
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = searchInput.value.trim();
+                if (query) {
+                    window.location.href = `products.html?search=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+    }
   </script>
-
-
-<div id="main-menu" class="main-menu hidden">
-    <h2>منوی اصلی چوکال</h2>
-    <ul>
-      
-        <li><a href="products.html" id="products-link">محصولات</a></li>
-        <li><a href="aboutwe.html" id="aboutwe.html">درباره ما </a></li>
-        <li><a href="tamas.html" id="tamas.html">تماس با ما</a></li>
-      
-       
-      </ul>
-      
-  </div>
-  
- 
-
-
-
 </body>
 </html>

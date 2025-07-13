@@ -5,18 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>میز تلویزیون چوکال</title>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared.css">
   <style>
-    * { box-sizing: border-box; font-family: "Vazirmatn", sans-serif; margin: 0; padding: 0; }
-    
+    /* Styles specific to product pages */
     body {
-      background: linear-gradient(120deg, #2b1d0e, #1c0e04);
-      color: white;
-      min-height: 100vh;
       padding: 50px 20px;
     }
-    
-    h1 { text-align: center; color: #ffcc66; margin-bottom: 40px; text-shadow: 0 0 10px rgba(255,204,102,0.3); }
-    
+    h1 { text-align: center; color: #fccc6c; margin-bottom: 40px; text-shadow: 0 0 10px rgba(255,204,102,0.3); }
     .gallery {
       max-width: 1100px;
       margin: 0 auto;
@@ -24,7 +19,6 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
     }
-    
     .back-buttons {
       position: fixed;
       top: 20px;
@@ -34,7 +28,6 @@
       flex-direction: column;
       gap: 10px;
     }
-    
     .back-btn {
       padding: 10px 15px;
       border-radius: 25px;
@@ -42,102 +35,9 @@
       font-weight: bold;
       transition: all 0.3s ease;
     }
-    
     .products-btn { background: rgba(255,204,102,0.2); color: #ffcc66; border: 1px solid rgba(255,204,102,0.4); }
     .home-btn { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
     .back-btn:hover { transform: translateY(-3px); }
-    
-    .favorites-icon {
-      position: fixed;
-      top: 140px;
-      left: 20px;
-      background: linear-gradient(45deg, #ffcc66, #ffd700);
-      color: #8B4513;
-      padding: 12px 20px;
-      border-radius: 25px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      z-index: 1000;
-      border: 2px solid rgba(255, 215, 0, 0.4);
-      transition: all 0.3s ease;
-      font-weight: bold;
-      box-shadow: 0 4px 15px rgba(255, 204, 102, 0.3);
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-    
-    @keyframes glow {
-      from { box-shadow: 0 4px 15px rgba(255, 204, 102, 0.3); }
-      to { box-shadow: 0 6px 25px rgba(255, 204, 102, 0.6); }
-    }
-    
-    .favorites-icon:hover { 
-      background: linear-gradient(45deg, #ffd700, #ffcc66);
-      transform: scale(1.05) translateY(-2px);
-      box-shadow: 0 8px 30px rgba(255, 204, 102, 0.7);
-    }
-    
-    .favorites-panel {
-      position: fixed;
-      top: 190px;
-      left: 20px;
-      width: 350px;
-      max-height: 500px;
-      overflow-y: auto;
-      background: rgba(0, 0, 0, 0.9);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 15px;
-      z-index: 999;
-      display: none;
-      border: 1px solid rgba(255,204,102,0.3);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    }
-    
-    .favorites-panel.show { display: block; animation: fadeIn 0.3s ease; }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .favorite-item {
-      padding: 12px;
-      margin: 8px 0;
-      background: rgba(255,204,102,0.1);
-      border-radius: 8px;
-      border-right: 3px solid #ffcc66;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .favorite-item:hover { background: rgba(255,204,102,0.2); transform: translateX(-5px); }
-    
-    .favorite-item img {
-      width: 50px;
-      height: 50px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-    
-    .favorite-info h5 { color: #ffcc66; margin-bottom: 4px; font-size: 14px; }
-    .favorite-info small { color: #ccc; font-size: 12px; }
-    
-    .favorite-remove {
-      margin-right: auto;
-      background: rgba(255, 107, 107, 0.2);
-      color: #ff6b6b;
-      border: none;
-      padding: 5px 8px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 12px;
-    }
-    
     .product-card {
       background: rgba(255,255,255,0.05);
       border-radius: 15px;
@@ -145,9 +45,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       transition: transform 0.3s ease;
     }
-    
     .product-card:hover { transform: translateY(-5px); }
-    
     .product-image-container {
       position: relative;
       width: 100%;
@@ -155,16 +53,13 @@
       overflow: hidden;
       cursor: pointer;
     }
-    
     .product-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.3s ease;
     }
-    
     .product-image:hover { transform: scale(1.05); }
-    
     .product-overlay {
       position: absolute;
       bottom: 0;
@@ -176,12 +71,9 @@
       transform: translateY(100%);
       transition: transform 0.3s ease;
     }
-    
     .product-card:hover .product-overlay { transform: translateY(0); }
-    
     .product-title { font-size: 1.2rem; margin-bottom: 5px; color: #ffcc66; }
     .product-type { font-size: 0.9rem; color: #ccc; }
-    
     .product-fallback {
       width: 100%;
       height: 250px;
@@ -195,14 +87,12 @@
       line-height: 1.6;
       cursor: pointer;
     }
-    
     .product-actions {
       display: flex;
       padding: 15px;
       background: rgba(0,0,0,0.3);
       gap: 10px;
     }
-    
     .action-btn {
       flex: 1;
       display: flex;
@@ -218,12 +108,10 @@
       transition: all 0.3s ease;
       border-radius: 8px;
     }
-    
     .action-btn.like { background: rgba(255, 107, 107, 0.1); }
     .action-btn.liked { background: rgba(255, 107, 107, 0.3); color: #ff6b6b; }
     .action-btn.comment { background: rgba(102, 204, 255, 0.1); }
     .action-btn:hover { transform: scale(1.05); }
-    
     .modal {
       position: fixed;
       inset: 0;
@@ -236,11 +124,8 @@
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
-    
     .modal.active { opacity: 1; pointer-events: auto; }
-    
     .modal-content { position: relative; max-width: 90%; max-height: 90%; }
-    
     .modal-img {
       max-width: 100%;
       max-height: 80vh;
@@ -248,9 +133,7 @@
       cursor: zoom-in;
       transition: transform 0.3s ease;
     }
-    
     .modal-img.zoomed { transform: scale(1.5); cursor: zoom-out; }
-    
     .modal-close {
       position: absolute;
       top: -15px;
@@ -267,13 +150,11 @@
       font-size: 20px;
       border: none;
     }
-    
     .modal-actions {
       display: flex;
       justify-content: center;
       margin-top: 20px;
     }
-    
     .modal-like-btn {
       background: rgba(255, 107, 107, 0.2);
       color: #ff6b6b;
@@ -284,17 +165,8 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    
     .modal-like-btn.liked { background: rgba(255, 107, 107, 0.5); color: white; }
     .modal-like-btn:hover { transform: translateY(-3px); }
-    
-    @keyframes likeEffect {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-    
-    .like-animation { animation: likeEffect 0.6s ease; }
   </style>
 </head>
 <body>
@@ -303,16 +175,6 @@
     <a href="index.html" class="back-btn home-btn">🏠 صفحه اصلی</a>
   </div>
 
-  <div class="favorites-icon" id="favoritesIcon">
-    <span>⭐</span>
-    <span>علاقه‌مندی‌ها</span>
-    <span class="favorites-count">0</span>
-  </div>
-
-  <div class="favorites-panel" id="favoritesPanel">
-    <h4 style="color: #ffcc66; margin-bottom: 15px; text-align: center;">علاقه‌مندی‌های شما</h4>
-    <div id="favoritesList"></div>
-  </div>
 
   <h1>میز تلویزیون چوکال</h1>
 
@@ -328,195 +190,174 @@
     </div>
   </div>
 
+  <script src="products-db.js"></script>
+  <script src="language.js"></script>
+  <script src="shared.js"></script>
   <script>
-    // داده‌های محصولات میز تلویزیون
-    const products = [
-      { id: 1, name: 'میز تلویزیون مدرن', type: 'چوب گردو و شیشه', image: 'images/tv1.jpg' },
-      { id: 2, name: 'میز تلویزیون کلاسیک', type: 'چوب راش', image: 'images/tv2.jpg' },
-      { id: 3, name: 'میز تلویزیون شیک', type: 'چوب بلوط', image: 'images/tv3.jpg' },
-      { id: 4, name: 'میز تلویزیون مینیمال', type: 'ام دی اف و فلز', image: 'images/tv4.jpg' },
-      { id: 5, name: 'میز تلویزیون دیواری', type: 'چوب و فلز', image: 'images/tv5.jpg' },
-      { id: 6, name: 'میز تلویزیون لوکس', type: 'چوب ماهون', image: 'images/tv6.jpg' }
-    ];
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- CONFIG & STATE ---
+        const productKeys = ['tv1', 'tv2', 'tv3'];
+        const products = productKeys.map(key => allProducts[key]).filter(Boolean);
+        let favorites = [];
+        let currentProduct = null;
 
-    // سیستم علاقه‌مندی
-    const favorites = {
-      list: JSON.parse(localStorage.getItem('chokalFavoritesTV') || '[]'),
-      likes: JSON.parse(localStorage.getItem('chokalLikesTV') || '{}'),
-      
-      save() {
-        localStorage.setItem('chokalFavoritesTV', JSON.stringify(this.list));
-        localStorage.setItem('chokalLikesTV', JSON.stringify(this.likes));
-      },
-      
-      add(product) {
-        if (!this.has(product.name)) {
-          this.list.push({ ...product, date: new Date().toLocaleDateString('fa-IR') });
-          this.save();
-        }
-      },
-      
-      remove(name) {
-        this.list = this.list.filter(f => f.name !== name);
-        this.save();
-      },
-      
-      has(name) { return this.list.some(f => f.name === name); },
-      
-      like(name) {
-        this.likes[name] = (this.likes[name] || 0) + 1;
-        this.save();
-      },
-      
-      update() {
-        document.querySelector('.favorites-count').textContent = this.list.length;
-        document.querySelectorAll('.like-count').forEach(el => {
-          const name = el.closest('.action-btn').dataset.product;
-          el.textContent = this.likes[name] || 0;
+        // --- DOM ELEMENTS ---
+        const gallery = document.getElementById('gallery');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalLikeBtn = document.getElementById('modalLikeBtn');
+        const modalCloseBtn = document.querySelector('.modal-close');
+
+        // --- HELPERS ---
+        const getLang = () => localStorage.getItem('selectedLanguage') || 'fa';
+        const getTranslations = () => translations[getLang()];
+
+        // --- FAVORITES MANAGEMENT ---
+        const loadFavorites = () => {
+            favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+        };
+
+        const saveFavorites = () => {
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            if (window.updateGlobalFavorites) {
+                window.updateGlobalFavorites();
+            }
+        };
+
+        const toggleFavorite = (productId) => {
+            const index = favorites.indexOf(productId);
+            if (index > -1) {
+                favorites.splice(index, 1);
+            } else {
+                favorites.push(productId);
+            }
+            saveFavorites();
+        };
+
+        // --- UI RENDERING & UPDATES ---
+        const createProductCard = (product) => {
+            const t = getTranslations();
+            const translatedType = t.productTypeWood[product.type] || product.type;
+            const isLiked = favorites.includes(product.id);
+
+            return `
+                <div class="product-card" data-product-id="${product.id}">
+                    <div class="product-image-container" data-action="open-modal">
+                        <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="product-fallback" style="display: none;">📺<br>${product.name}<br><small>${t.imageNotFound}</small></div>
+                        <div class="product-overlay">
+                            <div class="product-title">${product.name}</div>
+                            <div class="product-type">${translatedType}</div>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="action-btn like ${isLiked ? 'liked' : ''}" data-action="toggle-like">
+                            ❤️ <span>${isLiked ? t.liked : t.like}</span>
+                        </button>
+                        <button class="action-btn comment" data-action="show-comment">
+                            💬 <span>نظرات</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+        };
+
+        const renderProducts = () => {
+            loadFavorites();
+            gallery.innerHTML = products.map(createProductCard).join('');
+        };
+
+        const updateCardLikeButton = (productId) => {
+            const cardButton = gallery.querySelector(`.product-card[data-product-id='${productId}'] .action-btn.like`);
+            if (cardButton) {
+                const isLiked = favorites.includes(productId);
+                const t = getTranslations();
+                cardButton.classList.toggle('liked', isLiked);
+                cardButton.querySelector('span').textContent = isLiked ? t.liked : t.like;
+            }
+        };
+
+        const updateModalLikeButton = () => {
+            if (!currentProduct) return;
+            const isLiked = favorites.includes(currentProduct.id);
+            const t = getTranslations();
+            modalLikeBtn.classList.toggle('liked', isLiked);
+            modalLikeBtn.textContent = `❤️ ${isLiked ? t.liked : t.like}`;
+        };
+
+        // --- MODAL ---
+        const openModal = (productId) => {
+            currentProduct = products.find(p => p.id === productId);
+            if (currentProduct) {
+                modalImg.src = currentProduct.image;
+                modalImg.alt = currentProduct.name;
+                modal.classList.add('active');
+                updateModalLikeButton();
+            }
+        };
+
+        const closeModal = () => {
+            modal.classList.remove('active');
+            modalImg.classList.remove('zoomed');
+            currentProduct = null;
+        };
+
+        // --- EVENT HANDLERS ---
+        const handleGalleryClick = (event) => {
+            const target = event.target;
+            const actionElement = target.closest('[data-action]');
+            if (!actionElement) return;
+
+            const action = actionElement.dataset.action;
+            const card = actionElement.closest('.product-card');
+            const productId = card ? card.dataset.productId : null;
+
+            switch (action) {
+                case 'toggle-like':
+                    event.stopPropagation();
+                    if (productId) {
+                        toggleFavorite(productId);
+                        updateCardLikeButton(productId);
+                        if (currentProduct && currentProduct.id === productId) {
+                           updateModalLikeButton();
+                        }
+                    }
+                    break;
+                case 'open-modal':
+                    if (productId) {
+                        openModal(productId);
+                    }
+                    break;
+                case 'show-comment':
+                    const t = getTranslations();
+                    alert(t.commentSystemSoon);
+                    break;
+            }
+        };
+
+        const handleModalLikeClick = () => {
+            if (currentProduct) {
+                toggleFavorite(currentProduct.id);
+                updateCardLikeButton(currentProduct.id);
+                updateModalLikeButton();
+            }
+        };
+
+        // --- INITIALIZATION ---
+        gallery.addEventListener('click', handleGalleryClick);
+        modalLikeBtn.addEventListener('click', handleModalLikeClick);
+        modalCloseBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
         });
-      }
-    };
+        modalImg.addEventListener('click', () => modalImg.classList.toggle('zoomed'));
 
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImage');
-    const modalLikeBtn = document.getElementById('modalLikeBtn');
-    const favoritesPanel = document.getElementById('favoritesPanel');
-    let currentProduct = null;
-
-    // ایجاد کارت محصول
-    function createProductCard(product) {
-      return `
-        <div class="product-card">
-          <div class="product-image-container" onclick="openModal('${product.image}', '${product.name}')">
-            <img src="${product.image}" alt="${product.name}" class="product-image" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-            <div class="product-fallback" style="display: none;">
-              📺<br>${product.name}<br><small>عکس پیدا نشد</small>
-            </div>
-            <div class="product-overlay">
-              <div class="product-title">${product.name}</div>
-              <div class="product-type">${product.type}</div>
-            </div>
-          </div>
-          <div class="product-actions">
-            <button class="action-btn like" data-product="${product.name}" onclick="toggleLike(this)">
-              ❤️ <span class="like-count">${favorites.likes[product.name] || 0}</span>
-            </button>
-            <button class="action-btn comment" onclick="showComment()">💬 نظر</button>
-          </div>
-        </div>
-      `;
-    }
-
-    // بارگذاری محصولات
-    function loadProducts() {
-      const gallery = document.getElementById('gallery');
-      gallery.innerHTML = products.map(createProductCard).join('');
-      favorites.update();
-    }
-
-    // باز کردن مودال
-    function openModal(image, name) {
-      currentProduct = products.find(p => p.name === name);
-      modalImg.src = image;
-      modalImg.alt = name;
-      modal.classList.add('active');
-      updateModalBtn();
-    }
-
-    // لایک/آنلایک
-    function toggleLike(btn) {
-      const name = btn.dataset.product;
-      const product = products.find(p => p.name === name);
-      
-      if (favorites.has(name)) {
-        favorites.remove(name);
-        btn.classList.remove('liked');
-      } else {
-        favorites.add(product);
-        favorites.like(name);
-        btn.classList.add('liked', 'like-animation');
-        setTimeout(() => btn.classList.remove('like-animation'), 600);
-      }
-      
-      favorites.update();
-      updateModalBtn();
-    }
-
-    // آپدیت دکمه مودال
-    function updateModalBtn() {
-      if (currentProduct && favorites.has(currentProduct.name)) {
-        modalLikeBtn.classList.add('liked');
-        modalLikeBtn.textContent = '❤️ لایک شده';
-      } else {
-        modalLikeBtn.classList.remove('liked');
-        modalLikeBtn.textContent = '❤️ لایک';
-      }
-    }
-
-    // نمایش علاقه‌مندی‌ها
-    function showFavorites() {
-      const list = document.getElementById('favoritesList');
-      
-      if (favorites.list.length === 0) {
-        list.innerHTML = '<p style="text-align: center; color: #ccc;">هیچ محصولی اضافه نشده</p>';
-        return;
-      }
-      
-      list.innerHTML = favorites.list.map(item => `
-        <div class="favorite-item" onclick="openModal('${item.image}', '${item.name}')">
-          <img src="${item.image}" alt="${item.name}" 
-               onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjOEI0NTEzIi8+Cjx0ZXh0IHg9IjI1IiB5PSIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iMjAiPvCfk7o8L3RleHQ+Cjwvc3ZnPg=='">
-          <div class="favorite-info">
-            <h5>${item.name}</h5>
-            <small>${item.type} - ${item.date}</small>
-          </div>
-          <button class="favorite-remove" onclick="event.stopPropagation(); removeFavorite('${item.name}')">×</button>
-        </div>
-      `).join('');
-    }
-
-    // حذف از علاقه‌مندی‌ها
-    function removeFavorite(name) {
-      favorites.remove(name);
-      favorites.update();
-      showFavorites();
-    }
-
-    // نمایش نظر
-    function showComment() {
-      alert('سیستم نظرات به زودی! 💬');
-    }
-
-    // Event Listeners
-    document.getElementById('favoritesIcon').addEventListener('click', (e) => {
-      e.stopPropagation();
-      favoritesPanel.classList.toggle('show');
-      if (favoritesPanel.classList.contains('show')) showFavorites();
+        // Initial Render
+        renderProducts();
+        
+        // Make render function available for language switcher
+        window.renderTvProducts = renderProducts;
     });
-
-    modalLikeBtn.addEventListener('click', () => {
-      if (currentProduct) {
-        const btn = document.querySelector(`[data-product="${currentProduct.name}"]`);
-        toggleLike(btn);
-      }
-    });
-
-    document.querySelector('.modal-close').addEventListener('click', () => {
-      modal.classList.remove('active');
-      modalImg.classList.remove('zoomed');
-    });
-
-    modalImg.addEventListener('click', () => modalImg.classList.toggle('zoomed'));
-
-    document.addEventListener('click', (e) => {
-      if (!favoritesPanel.contains(e.target) && !document.getElementById('favoritesIcon').contains(e.target)) {
-        favoritesPanel.classList.remove('show');
-      }
-    });
-
-    // شروع
-    loadProducts();
   </script>
 </body>
 </html>

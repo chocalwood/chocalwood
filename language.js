@@ -34,8 +34,44 @@ const translations = {
       deco: "❤️ محصولات تزیینی",
       steel_sofa: "🏠 مبل استیل",
       standing_mirror: "❤️ آیینه قدی",
-      comfort_sofa: "🏠 مبل راحتی"
-    }
+      comfort_sofa: "🏠 مبل راحتی",
+      tablo: "🖼️ اکسسوری و تابلو",
+      tablo1: "تابلو مدرن",
+      tablo2: "تابلو کلاسیک",
+      tablo3: "اکسسوری دکوری"
+    },
+
+    // صفحه سرویس خواب (bed.html)
+    bedTitle: "سرویس خواب چوکال",
+    backToProducts: "← محصولات",
+    backToHome: "🏠 صفحه اصلی",
+    favorites: "علاقه‌مندی‌ها",
+    yourFavorites: "علاقه‌مندی‌های شما",
+    imageNotFound: "عکس پیدا نشد",
+    like: "لایک",
+    liked: "لایک شده",
+    noFavoritesAdded: "هیچ محصولی اضافه نشده",
+    commentSystemSoon: "سیستم نظرات به زودی!",
+    productTypeWood: {
+      "چوب راش": "چوب راش",
+      "چوب گردو": "چوب گردو",
+      "چوب بلوط": "چوب بلوط",
+      "چوب کاج": "چوب کاج",
+      "چوب توت": "چوب توت",
+      "چوب ممرز": "چوب ممرز"
+    },
+    productTypeArt: {
+      "رنگ روغن": "رنگ روغن",
+      "آبرنگ": "آبرنگ",
+      "فلزی": "فلزی"
+    },
+    // صفحه تماس با ما (tamas.html)
+   contactHeader: "تماس با چوکال",
+   contactSubHeader: "هر زمان که نیاز به مشاوره دارید، با ما در ارتباط باشید",
+   backButtonContact: "← برگشت",
+   phoneTitle: "تماس تلفنی",
+   emailTitle: "ایمیل",
+   instagramTitle: "اینستاگرام"
   },
   
   en: {
@@ -72,8 +108,44 @@ const translations = {
       deco: "❤️ Decorative Products",
       steel_sofa: "🏠 Steel Sofa",
       standing_mirror: "❤️ Standing Mirror",
-      comfort_sofa: "🏠 Comfort Sofa"
-    }
+      comfort_sofa: "🏠 Comfort Sofa",
+      tablo: "🖼️ Accessories & Paintings",
+      tablo1: "Modern Painting",
+      tablo2: "Classic Painting",
+      tablo3: "Decorative Accessory"
+    },
+
+    // Bed page (bed.html)
+    bedTitle: "Chocal Bedroom Set",
+    backToProducts: "← Products",
+    backToHome: "🏠 Home",
+    favorites: "Favorites",
+    yourFavorites: "Your Favorites",
+    imageNotFound: "Image not found",
+    like: "Like",
+    liked: "Liked",
+    noFavoritesAdded: "No items added",
+    commentSystemSoon: "Comment system coming soon!",
+    productTypeWood: {
+      "چوب راش": "Beech Wood",
+      "چوب گردو": "Walnut Wood",
+      "چوب بلوط": "Oak Wood",
+      "چوب کاج": "Pine Wood",
+      "چوب توت": "Mulberry Wood",
+      "چوب ممرز": "Hornbeam Wood"
+    },
+    productTypeArt: {
+      "رنگ روغن": "Oil Painting",
+      "آبرنگ": "Watercolor",
+      "فلزی": "Metallic"
+    },
+     // Contact Us page (tamas.html)
+   contactHeader: "Contact Chocal",
+   contactSubHeader: "Feel free to contact us whenever you need advice",
+   backButtonContact: "← Back",
+   phoneTitle: "Phone Call",
+   emailTitle: "Email",
+   instagramTitle: "Instagram"
   },
   
   ar: {
@@ -110,8 +182,44 @@ const translations = {
       deco: "❤️ منتجات تزيينية",
       steel_sofa: "🏠 أريكة ستيل",
       standing_mirror: "❤️ مرآة واقفة",
-      comfort_sofa: "🏠 أريكة مريحة"
-    }
+      comfort_sofa: "🏠 أريكة مريحة",
+      tablo: "🖼️ إكسسوارات ولوحات",
+      tablo1: "لوحة حديثة",
+      tablo2: "لوحة كلاسيكية",
+      tablo3: "إكسسوار ديكور"
+    },
+
+    // صفحة طقم غرفة النوم (bed.html)
+    bedTitle: "طقم غرفة نوم شوكال",
+    backToProducts: "→ المنتجات",
+    backToHome: "🏠 الرئيسية",
+    favorites: "المفضلة",
+    yourFavorites: "مفضلاتك",
+    imageNotFound: "لم يتم العثور على الصورة",
+    like: "إعجاب",
+    liked: "أعجبني",
+    noFavoritesAdded: "لم تتم إضافة أي عناصر",
+    commentSystemSoon: "نظام التعليقات قريباً!",
+    productTypeWood: {
+      "چوب راش": "خشب الزان",
+      "چوب گردو": "خشب الجوز",
+      "چوب بلوط": "خشب البلوط",
+      "چوب کاج": "خشب الصنوبر",
+      "چوب توت": "خشب التوت",
+      "چوب ممرز": "خشب النير"
+    },
+    productTypeArt: {
+      "رنگ روغن": "لوحة زيتية",
+      "آبرنگ": "ألوان مائية",
+      "فلزی": "معدني"
+    },
+     // صفحة اتصل بنا (tamas.html)
+   contactHeader: "اتصل بشوكال",
+   contactSubHeader: "لا تتردد في الاتصال بنا كلما احتجت إلى مشورة",
+   backButtonContact: "→ رجوع",
+   phoneTitle: "مكالمة هاتفية",
+   emailTitle: "بريد إلكتروني",
+   instagramTitle: "انستغرام"
   }
 };
 
@@ -136,6 +244,21 @@ function switchLanguage(lang) {
   
   // بروزرسانی تنظیمات CSS برای زبان‌های مختلف
   updateLanguageStyles(lang);
+
+  // ترجمه صفحه سرویس خواب (bed.html)
+  if (document.querySelector('.gallery')) {
+    translateBedPage(lang);
+  }
+
+   // ترجمه صفحه تماس با ما (tamas.html)
+   if (document.querySelector('.contact-grid')) {
+    translateContactPage(lang);
+  }
+
+  // ترجمه صفحه تابلو (tablo.html)
+  if (document.body.classList.contains('tablo-page')) {
+    translateTabloPage(lang);
+  }
 }
 
 // ترجمه صفحه اصلی
@@ -249,6 +372,26 @@ function translateProductsPage(lang) {
   }
 }
 
+// ترجمه صفحه سرویس خواب
+function translateBedPage(lang) {
+  const t = translations[lang];
+
+  document.querySelector('h1').innerText = t.bedTitle;
+  document.querySelector('.products-btn').innerText = t.backToProducts;
+  document.querySelector('.home-btn').innerText = t.backToHome;
+  document.querySelector('.favorites-icon span:nth-child(2)').innerText = t.favorites;
+  document.querySelector('.favorites-panel h4').innerText = t.yourFavorites;
+  
+  const emptyFavs = document.querySelector('.favorites-panel p');
+  if(emptyFavs) emptyFavs.innerText = t.noFavoritesAdded;
+
+  // This will translate product types when the cards are rerendered
+  if (typeof loadProducts === 'function') {
+    loadProducts();
+  }
+}
+
+
 // بروزرسانی استایل‌ها بر اساس زبان
 function updateLanguageStyles(lang) {
   const body = document.body;
@@ -351,3 +494,46 @@ if (typeof module !== 'undefined' && module.exports) {
   };
 }
 
+// ترجمه صفحه تماس با ما
+function translateContactPage(lang) {
+ const t = translations[lang];
+
+ document.title = t.contactHeader;
+ 
+ const header = document.querySelector('header h1');
+ if(header) header.innerText = t.contactHeader;
+
+ const subHeader = document.querySelector('header p');
+ if(subHeader) subHeader.innerText = t.contactSubHeader;
+
+ const backBtn = document.querySelector('.back-btn');
+ if(backBtn) backBtn.innerText = t.backButtonContact;
+
+ const contactTitles = document.querySelectorAll('.contact-title');
+ if (contactTitles.length === 3) {
+   contactTitles[0].innerText = t.phoneTitle;
+   contactTitles[1].innerText = t.emailTitle;
+   contactTitles[2].innerText = t.instagramTitle;
+  }
+ }
+
+// ترجمه صفحه تابلو
+function translateTabloPage(lang) {
+  const t = translations[lang];
+
+  document.title = t.productNames.tablo || 'اکسسوری و تابلو';
+  
+  const header = document.querySelector('.header h1');
+  if(header) header.innerText = t.productNames.tablo || 'اکسسوری و تابلو';
+
+  const backBtn = document.querySelector('.back-btn');
+  if(backBtn) backBtn.innerText = t.backButton || '🏠 برگشت به صفحه اصلی';
+
+  const productsTab = document.querySelector('.nav-btn');
+  if(productsTab) productsTab.innerText = t.productsTab || 'محصولات';
+
+  // Rerender product cards with the correct language
+  if (typeof generateProductCards === 'function') {
+    generateProductCards();
+  }
+}
