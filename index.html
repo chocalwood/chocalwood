@@ -137,6 +137,9 @@
       document.querySelector('.welcome-box').style.opacity = '0';
       document.querySelector('.welcome-box').style.transition = 'opacity 0.8s ease';
       
+      // Add class to body to hide elements
+      document.body.classList.add('menu-is-open');
+
       // نمایش منو بعد از کمی تأخیر
       setTimeout(() => {
         document.querySelector('.welcome-box').style.display = 'none';

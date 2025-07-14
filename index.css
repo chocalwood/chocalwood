@@ -307,6 +307,10 @@ body.fade-out {
   opacity: 0 !important;
   transform: translateY(-30px) !important;
 }
+body.menu-is-open .flags,
+body.menu-is-open .search-icon {
+   display: none;
+}
 .search-icon {
   position: fixed;
   top: 50%;
