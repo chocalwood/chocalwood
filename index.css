@@ -264,7 +264,7 @@ a.button:hover {
   height: 100%;
   background: linear-gradient(135deg, #1a1a1a, #3e2c1c);
   color: #fff;
-  z-index: 5;
+  z-index: 11;
   padding: 80px 40px;
   opacity: 0;
   transform: translateY(30px);
