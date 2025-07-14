@@ -418,6 +418,9 @@ body.fade-out {
   html, body {
     height: auto; /* Allow scrolling */
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .bg, .overlay {
@@ -428,7 +431,9 @@ body.fade-out {
 
   .welcome-container {
     justify-content: flex-start;
-    padding-top: 40px;
+    padding-top: 20px; /* Adjusted padding */
+    order: 4; /* Set order */
+    width: 100%;
   }
 
   .welcome-box, .special-offer, .top-contact, .flags, .search-icon {
@@ -438,16 +443,24 @@ body.fade-out {
     left: auto;
     right: auto;
     bottom: auto;
-    margin: 15px auto;
+    margin: 10px 0; /* Use margin for spacing in flex column */
     width: 90%;
     max-width: 500px;
     backdrop-filter: blur(5px); /* Reduce blur */
     animation: none; /* Disable heavy animations */
   }
+  
+  .top-contact { order: 1; }
+  .search-icon { order: 2; }
+  .special-offer { order: 3; }
+  .flags { order: 5; }
+
 
   .welcome-box {
     padding: 25px;
     max-width: 95%;
+    margin-left: auto; /* Center inside welcome-container */
+    margin-right: auto; /* Center inside welcome-container */
     animation: fadeInUpMobile 0.8s ease-out forwards; /* Add a simple entrance animation */
   }
 
@@ -478,7 +491,6 @@ body.fade-out {
     justify-content: center;
     flex-wrap: wrap;
     position: static; /* Change from fixed */
-    margin-top: 30px;
   }
   #lang-switch {
       text-align: center;
@@ -497,6 +509,8 @@ body.fade-out {
       width: 60px;
       height: 60px;
       position: static; /* Change from fixed */
+      margin-left: auto; /* Center icon */
+      margin-right: auto; /* Center icon */
   }
   .search-icon svg {
       width: 25px;
