@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>جاکفشی چوکال</title>
+  <title>بار قهوه چوکال</title>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="shared.css">
   <style>
@@ -167,6 +167,7 @@
     }
     .modal-like-btn.liked { background: rgba(255, 107, 107, 0.5); color: white; }
     .modal-like-btn:hover { transform: translateY(-3px); }
+
   </style>
 </head>
 <body>
@@ -176,7 +177,7 @@
   </div>
 
 
-  <h1>جاکفشی چوکال</h1>
+  <h1>بار قهوه چوکال</h1>
 
   <div class="gallery" id="gallery"></div>
 
@@ -196,7 +197,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
         // --- CONFIG & STATE ---
-        const productKeys = Array.from({length: 21}, (_, i) => `jak${i + 1}`);
+        const productKeys = ['bar1', 'bar2', 'bar3'];
         const products = productKeys.map(key => allProducts[key]).filter(Boolean);
         let favorites = [];
         let currentProduct = null;
@@ -244,7 +245,7 @@
                 <div class="product-card" data-product-id="${product.id}">
                     <div class="product-image-container" data-action="open-modal">
                         <img src="${product.image}" alt="${product.name}" class="product-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                        <div class="product-fallback" style="display: none;">🛏️<br>${product.name}<br><small>${t.imageNotFound}</small></div>
+                        <div class="product-fallback" style="display: none;">☕<br>${product.name}<br><small>${t.imageNotFound}</small></div>
                         <div class="product-overlay">
                             <div class="product-title">${product.name}</div>
                             <div class="product-type">${translatedType}</div>
@@ -356,7 +357,7 @@
         renderProducts();
         
         // Make render function available for language switcher
-        window.renderJakProducts = renderProducts;
+        window.renderBarProducts = renderProducts;
     });
   </script>
 </body>

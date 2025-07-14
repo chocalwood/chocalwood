@@ -9,6 +9,7 @@ const translations = {
     phoneText: 'تماس با مجموعه چوکال - <a href="tel:+989386908288">+989386908288</a>',
     mainMenuTitle: "منوی اصلی چوکال",
     productsLink: "محصولات",
+    shopLink: "خرید آنلاین",
     aboutLink: "درباره ما",
     contactLink: "تماس با ما",
     specialOfferTitle: "تخفیف ویژه برای اولین خرید",
@@ -71,7 +72,48 @@ const translations = {
    backButtonContact: "← برگشت",
    phoneTitle: "تماس تلفنی",
    emailTitle: "ایمیل",
-   instagramTitle: "اینستاگرام"
+   instagramTitle: "اینستاگرام",
+
+   // صفحه درباره ما (aboutwe.html)
+   aboutTitle: "درباره ما - صنعت چوبی چوکال",
+   aboutLogo: "🌳 چوکال",
+   aboutBack: "بازگشت به خانه",
+   aboutStoryTitle: "داستان چوکال",
+   aboutStorySubtitle: "سه دهه تجربه در خلق شاهکارهای چوبی",
+   aboutHistoryTitle: "تاریخچه چوکال",
+   aboutHistoryText: "صنعت چوبی چوکال با بیش از ۳۰ سال تجربه در زمینه طراحی و تولید محصولات چوبی با کیفیت، یکی از پیشروان صنعت چوب در منطقه محسوب می‌شود. ما در طول این سال‌ها همواره در تلاش برای ارائه بهترین کیفیت و خدمات به مشتریان عزیز بوده‌ایم. تیم متخصص ما با استفاده از مدرن‌ترین تکنولوژی‌ها و به‌کارگیری بهترین مواد اولیه، محصولاتی تولید می‌کند که نه تنها زیبایی فضای شما را دوچندان می‌کند، بلکه دوام و کیفیت بی‌نظیری نیز دارند.",
+   aboutStat1: "سال تجربه",
+   aboutStat2: "پروژه موفق",
+   aboutStat3: "متخصص ماهر",
+   aboutStat4: "رضایت مشتری",
+   aboutMissionTitle: "ماموریت ما",
+   aboutMissionText: "ماموریت ما در چوکال ایجاد فضاهای زیبا و کارآمد با استفاده از چوب طبیعی است. ما معتقدیم که چوب نه تنها یک ماده ساختمانی است، بلکه حاملی از گرمای طبیعت و زیبایی است که می‌تواند هر فضایی را به مکانی دلپذیر و آرامش‌بخش تبدیل کند. هدف ما ارائه محصولات و خدماتی است که نه تنها انتظارات شما را برآورده کند، بلکه فراتر از آن، تجربه‌ای بی‌نظیر از زیبایی و کیفیت را به شما هدیه دهد.",
+   aboutFeature1Title: "کیفیت برتر",
+   aboutFeature1Text: "استفاده از بهترین مواد اولیه و کنترل کیفیت دقیق در تمام مراحل تولید",
+   aboutFeature2Title: "متخصصین باتجربه",
+   aboutFeature2Text: "تیم متخصص با سال‌ها تجربه در طراحی و ساخت محصولات چوبی",
+   aboutFeature3Title: "طراحی منحصر به فرد",
+   aboutFeature3Text: "طراحی‌های سفارشی متناسب با سلیقه و نیاز هر مشتری",
+   aboutFeature4Title: "تحویل سریع",
+   aboutFeature4Text: "تعهد به زمان تحویل و اجرای پروژه‌ها در کمترین زمان ممکن",
+   aboutFeature5Title: "ضمانت کیفیت",
+   aboutFeature5Text: "ارائه ضمانت کامل برای تمام محصولات و خدمات پس از فروش",
+   aboutFeature6Title: "مسئولیت زیست‌محیطی",
+   aboutFeature6Text: "استفاده از چوب‌های پایدار و رعایت اصول زیست‌محیطی",
+   aboutVisionTitle: "چشم‌انداز آینده",
+   aboutVisionText: "چوکال با نگاهی به آینده، در تلاش برای توسعه مداوم و نوآوری در صنعت چوب است. ما به دنبال ایجاد محصولات هوشمند و پایدار هستیم که نه تنها زیبایی فضا را تضمین کند، بلکه در راستای حفظ محیط زیست نیز گام بردارد. هدف ما تبدیل شدن به بزرگ‌ترین و معتبرترین مرجع صنعت چوب در منطقه است، جایی که کیفیت، نوآوری و رضایت مشتری در اولویت قرار دارد.",
+   aboutFooterText: "با تشکر از اعتماد شما به چوکال - کیفیت را با چوب تجربه کنید",
+   aboutContactLocation: "ایران، تهران,شهریار شاهد شهر خیابان محمد آژند",
+
+   // صفحه فروشگاه (shop.html)
+   shopTitle: "خرید آنلاین - صنعت چوبی چوکال",
+   shopLogo: "🌳 چوکال",
+   shopBack: "بازگشت به خانه",
+   shopHeroTitle: "خرید آنلاین",
+   shopHeroSubtitle: "محصولات ما را به صورت آنلاین سفارش دهید",
+   shopComingSoon: "بخش فروش آنلاین به زودی راه اندازی خواهد شد.",
+   shopContactUs: "در حال حاضر برای ثبت سفارش و اطلاع از قیمت‌ها می‌توانید با ما تماس بگیرید.",
+   shopFooterText: "با تشکر از اعتماد شما به چوکال - کیفیت را با چوب تجربه کنید"
   },
   
   en: {
@@ -85,6 +127,7 @@ const translations = {
     productsLink: "Products",
     aboutLink: "About Us",
     contactLink: "Contact Us",
+    shopLink: "Online Shop",
     specialOfferTitle: "Special Discount for First Purchase",
     specialOfferSubtitle: "20% Discount + Free Shipping",
     
@@ -145,7 +188,48 @@ const translations = {
    backButtonContact: "← Back",
    phoneTitle: "Phone Call",
    emailTitle: "Email",
-   instagramTitle: "Instagram"
+   instagramTitle: "Instagram",
+
+   // About Us page (aboutwe.html)
+   aboutTitle: "About Us - Chocal Wood Industry",
+   aboutLogo: "🌳 Chocal",
+   aboutBack: "Back to Home",
+   aboutStoryTitle: "The Story of Chocal",
+   aboutStorySubtitle: "Three decades of experience in creating wooden masterpieces",
+   aboutHistoryTitle: "History of Chocal",
+   aboutHistoryText: "With over 30 years of experience in designing and producing high-quality wooden products, Chocal Wood Industry is considered one of the pioneers in the wood industry in the region. Throughout these years, we have always strived to provide the best quality and services to our dear customers. Our specialized team, using the most modern technologies and the best raw materials, produces products that not only double the beauty of your space but also have unparalleled durability and quality.",
+   aboutStat1: "Years of Experience",
+   aboutStat2: "Successful Projects",
+   aboutStat3: "Skilled Specialists",
+   aboutStat4: "Customer Satisfaction",
+   aboutMissionTitle: "Our Mission",
+   aboutMissionText: "Our mission at Chocal is to create beautiful and functional spaces using natural wood. We believe that wood is not just a building material, but a carrier of nature's warmth and beauty that can transform any space into a pleasant and relaxing place. Our goal is to provide products and services that not only meet your expectations but go beyond them, offering you an unparalleled experience of beauty and quality.",
+   aboutFeature1Title: "Superior Quality",
+   aboutFeature1Text: "Use of the best raw materials and strict quality control at all stages of production",
+   aboutFeature2Title: "Experienced Specialists",
+   aboutFeature2Text: "A specialized team with years of experience in designing and manufacturing wooden products",
+   aboutFeature3Title: "Unique Design",
+   aboutFeature3Text: "Custom designs tailored to the taste and needs of each customer",
+   aboutFeature4Title: "Fast Delivery",
+   aboutFeature4Text: "Commitment to delivery times and project execution in the shortest possible time",
+   aboutFeature5Title: "Quality Guarantee",
+   aboutFeature5Text: "Providing a full guarantee for all products and after-sales services",
+   aboutFeature6Title: "Environmental Responsibility",
+   aboutFeature6Text: "Use of sustainable wood and adherence to environmental principles",
+   aboutVisionTitle: "Future Vision",
+   aboutVisionText: "Looking to the future, Chocal strives for continuous development and innovation in the wood industry. We aim to create smart and sustainable products that not only ensure the beauty of the space but also contribute to environmental preservation. Our goal is to become the largest and most reputable authority in the wood industry in the region, where quality, innovation, and customer satisfaction are prioritized.",
+   aboutFooterText: "Thank you for your trust in Chocal - Experience quality with wood",
+   aboutContactLocation: "Iran, Tehran, Shahriar, Shahed Shahr, Mohammad Ajand St.",
+
+   // Shop page (shop.html)
+   shopTitle: "Online Shop - Chocal Wood Industry",
+   shopLogo: "🌳 Chocal",
+   shopBack: "Back to Home",
+   shopHeroTitle: "Online Shop",
+   shopHeroSubtitle: "Order our products online",
+   shopComingSoon: "The online sales section will be launched soon.",
+   shopContactUs: "Currently, you can contact us to place an order and inquire about prices.",
+   shopFooterText: "Thank you for your trust in Chocal - Experience quality with wood"
   },
   
   ar: {
@@ -159,6 +243,7 @@ const translations = {
     productsLink: "المنتجات",
     aboutLink: "من نحن",
     contactLink: "اتصل بنا",
+    shopLink: "التسوق عبر الإنترنت",
     specialOfferTitle: "خصم خاص للشراء الأول",
     specialOfferSubtitle: "خصم 20% + شحن مجاني",
     
@@ -219,7 +304,48 @@ const translations = {
    backButtonContact: "→ رجوع",
    phoneTitle: "مكالمة هاتفية",
    emailTitle: "بريد إلكتروني",
-   instagramTitle: "انستغرام"
+   instagramTitle: "انستغرام",
+
+   // صفحة من نحن (aboutwe.html)
+   aboutTitle: "من نحن - صناعة الخشب شوكال",
+   aboutLogo: "🌳 شوكال",
+   aboutBack: "العودة إلى الرئيسية",
+   aboutStoryTitle: "قصة شوكال",
+   aboutStorySubtitle: "ثلاثة عقود من الخبرة في إبداع روائع خشبية",
+   aboutHistoryTitle: "تاريخ شوكال",
+   aboutHistoryText: "مع أكثر من 30 عامًا من الخبرة في تصميم وإنتاج المنتجات الخشبية عالية الجودة ، تعتبر صناعة شوكال للأخشاب واحدة من الشركات الرائدة في صناعة الأخشاب في المنطقة. على مر السنين ، سعينا دائمًا لتقديم أفضل جودة وخدمات لعملائنا الأعزاء. يقوم فريقنا المتخصص ، باستخدام أحدث التقنيات وأفضل المواد الخام ، بإنتاج منتجات لا تضاعف جمال مساحتك فحسب ، بل تتمتع أيضًا بمتانة وجودة لا مثيل لهما.",
+   aboutStat1: "سنوات من الخبرة",
+   aboutStat2: "مشروع ناجح",
+   aboutStat3: "متخصص ماهر",
+   aboutStat4: "رضا العملاء",
+   aboutMissionTitle: "مهمتنا",
+   aboutMissionText: "مهمتنا في شوكال هي خلق مساحات جميلة وعملية باستخدام الخشب الطبيعي. نعتقد أن الخشب ليس مجرد مادة بناء ، ولكنه حامل لدفء الطبيعة وجمالها الذي يمكن أن يحول أي مساحة إلى مكان لطيف ومريح. هدفنا هو تقديم منتجات وخدمات لا تلبي توقعاتك فحسب ، بل تتجاوزها ، وتقدم لك تجربة لا مثيل لها من الجمال والجودة.",
+   aboutFeature1Title: "جودة فائقة",
+   aboutFeature1Text: "استخدام أفضل المواد الخام ورقابة صارمة على الجودة في جميع مراحل الإنتاج",
+   aboutFeature2Title: "متخصصون من ذوي الخبرة",
+   aboutFeature2Text: "فريق متخصص يتمتع بسنوات من الخبرة في تصميم وتصنيع المنتجات الخشبية",
+   aboutFeature3Title: "تصميم فريد",
+   aboutFeature3Text: "تصميمات مخصصة مصممة حسب ذوق واحتياجات كل عميل",
+   aboutFeature4Title: "توصيل سريع",
+   aboutFeature4Text: "الالتزام بمواعيد التسليم وتنفيذ المشاريع في أقصر وقت ممكن",
+   aboutFeature5Title: "ضمان الجودة",
+   aboutFeature5Text: "تقديم ضمان كامل لجميع المنتجات وخدمات ما بعد البيع",
+   aboutFeature6Title: "المسؤولية البيئية",
+   aboutFeature6Text: "استخدام الأخشاب المستدامة والالتزام بالمبادئ البيئية",
+   aboutVisionTitle: "رؤية مستقبلية",
+   aboutVisionText: "بالنظر إلى المستقبل ، تسعى شوكال جاهدة من أجل التطوير المستمر والابتكار في صناعة الأخشاب. نهدف إلى إنشاء منتجات ذكية ومستدامة لا تضمن جمال المساحة فحسب ، بل تساهم أيضًا في الحفاظ على البيئة. هدفنا هو أن نصبح أكبر سلطة وأكثرها شهرة في صناعة الأخشاب في المنطقة ، حيث الجودة والابتكار ورضا العملاء هي الأولوية.",
+   aboutFooterText: "شكرا لثقتكم في شوكال - جربوا الجودة مع الخشب",
+   aboutContactLocation: "إيران ، طهران ، شهريار ، شاهد شهر ، شارع محمد أجند",
+
+   // صفحة المتجر (shop.html)
+   shopTitle: "المتجر الإلكتروني - صناعة الخشب شوكال",
+   shopLogo: "🌳 شوكال",
+   shopBack: "العودة إلى الرئيسية",
+   shopHeroTitle: "المتجر الإلكتروني",
+   shopHeroSubtitle: "اطلب منتجاتنا عبر الإنترنت",
+   shopComingSoon: "سيتم إطلاق قسم المبيعات عبر الإنترنت قريبًا.",
+   shopContactUs: "حاليًا ، يمكنك الاتصال بنا لتقديم طلب والاستفسار عن الأسعار.",
+   shopFooterText: "شكرا لثقتكم في شوكال - جربوا الجودة مع الخشب"
   }
 };
 
@@ -259,6 +385,16 @@ function switchLanguage(lang) {
   if (document.body.classList.contains('tablo-page')) {
     translateTabloPage(lang);
   }
+
+  // ترجمه صفحه درباره ما (aboutwe.html)
+  if (document.body.classList.contains('about-page')) {
+    translateAboutPage(lang);
+  }
+
+  // ترجمه صفحه فروشگاه (shop.html)
+  if (document.body.classList.contains('shop-page')) {
+    translateShopPage(lang);
+  }
 }
 
 // ترجمه صفحه اصلی
@@ -292,11 +428,14 @@ function translateIndexPage(lang) {
   // لینک‌های منو
   const productsLink = document.querySelector('#products-link');
   if (productsLink) productsLink.innerText = t.productsLink;
+
+  const shopLink = document.querySelector('#shop-link');
+  if (shopLink) shopLink.innerText = t.shopLink;
   
-  const aboutLink = document.querySelector('.main-menu ul li:nth-child(2) a');
+  const aboutLink = document.querySelector('#about-link');
   if (aboutLink) aboutLink.innerText = t.aboutLink;
   
-  const contactLink = document.querySelector('.main-menu ul li:nth-child(3) a');
+  const contactLink = document.querySelector('#contact-link');
   if (contactLink) contactLink.innerText = t.contactLink;
   
   // تخفیف ویژه
@@ -536,4 +675,65 @@ function translateTabloPage(lang) {
   if (typeof generateProductCards === 'function') {
     generateProductCards();
   }
+}
+
+// ترجمه صفحه درباره ما
+function translateAboutPage(lang) {
+  const t = translations[lang];
+  document.title = t.aboutTitle;
+
+  document.querySelector('.logo').innerText = t.aboutLogo;
+  document.querySelector('.back-btn').innerText = t.aboutBack;
+  document.querySelector('.hero-title').innerText = t.aboutStoryTitle;
+  document.querySelector('.hero-subtitle').innerText = t.aboutStorySubtitle;
+  
+  const sectionTitles = document.querySelectorAll('.section-title');
+  sectionTitles[0].childNodes[2].nodeValue = ` ${t.aboutHistoryTitle}`;
+  sectionTitles[1].childNodes[2].nodeValue = ` ${t.aboutMissionTitle}`;
+  sectionTitles[2].childNodes[2].nodeValue = ` ${t.aboutVisionTitle}`;
+
+  document.querySelectorAll('.section-text')[0].innerText = t.aboutHistoryText;
+  document.querySelectorAll('.section-text')[1].innerText = t.aboutMissionText;
+  document.querySelectorAll('.section-text')[2].innerText = t.aboutVisionText;
+
+  const statLabels = document.querySelectorAll('.stat-label');
+  statLabels[0].innerText = t.aboutStat1;
+  statLabels[1].innerText = t.aboutStat2;
+  statLabels[2].innerText = t.aboutStat3;
+  statLabels[3].innerText = t.aboutStat4;
+
+  const featureTitles = document.querySelectorAll('.feature-title');
+  featureTitles[0].innerText = t.aboutFeature1Title;
+  featureTitles[1].innerText = t.aboutFeature2Title;
+  featureTitles[2].innerText = t.aboutFeature3Title;
+  featureTitles[3].innerText = t.aboutFeature4Title;
+  featureTitles[4].innerText = t.aboutFeature5Title;
+  featureTitles[5].innerText = t.aboutFeature6Title;
+
+  const featureTexts = document.querySelectorAll('.feature-text');
+  featureTexts[0].innerText = t.aboutFeature1Text;
+  featureTexts[1].innerText = t.aboutFeature2Text;
+  featureTexts[2].innerText = t.aboutFeature3Text;
+  featureTexts[3].innerText = t.aboutFeature4Text;
+  featureTexts[4].innerText = t.aboutFeature5Text;
+  featureTexts[5].innerText = t.aboutFeature6Text;
+
+  document.querySelector('.footer-text').innerText = t.aboutFooterText;
+  document.querySelector('.contact-item span:last-child').innerText = t.aboutContactLocation;
+}
+
+// ترجمه صفحه فروشگاه
+function translateShopPage(lang) {
+  const t = translations[lang];
+  document.title = t.shopTitle;
+
+  document.querySelector('.logo').innerText = t.shopLogo;
+  document.querySelector('.back-btn').innerText = t.shopBack;
+  document.querySelector('.hero-title').innerText = t.shopHeroTitle;
+  document.querySelector('.hero-subtitle').innerText = t.shopHeroSubtitle;
+  
+  const sectionText = document.querySelector('.section-text');
+  sectionText.innerHTML = `${t.shopComingSoon}<br><br>${t.shopContactUs}`;
+
+  document.querySelector('.footer-text').innerText = t.shopFooterText;
 }

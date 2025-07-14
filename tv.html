@@ -196,7 +196,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
         // --- CONFIG & STATE ---
-        const productKeys = ['tv1', 'tv2', 'tv3'];
+        const productKeys = Array.from({length: 21}, (_, i) => `tv${i + 1}`);
         const products = productKeys.map(key => allProducts[key]).filter(Boolean);
         let favorites = [];
         let currentProduct = null;
