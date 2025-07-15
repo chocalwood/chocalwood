@@ -14,6 +14,8 @@ const translations = {
     contactLink: "تماس با ما",
     specialOfferTitle: "تخفیف ویژه برای اولین خرید",
     specialOfferSubtitle: "٪20 تخفیف + ارسال رایگان",
+    exhibitorsLink: "قسمت نمایشگاه داران",
+    managersLink: "مدیران",
     
     // صفحه محصولات (products.html)
     productsTitle: "چوکال",
@@ -113,7 +115,16 @@ const translations = {
    shopHeroSubtitle: "محصولات ما را به صورت آنلاین سفارش دهید",
    shopComingSoon: "بخش فروش آنلاین به زودی راه اندازی خواهد شد.",
    shopContactUs: "در حال حاضر برای ثبت سفارش و اطلاع از قیمت‌ها می‌توانید با ما تماس بگیرید.",
-   shopFooterText: "با تشکر از اعتماد شما به چوکال - کیفیت را با چوب تجربه کنید"
+   shopFooterText: "با تشکر از اعتماد شما به چوکال - کیفیت را با چوب تجربه کنید",
+
+   // صفحه نمایشگاه داران (exhibitors.html)
+   exhibitorsTitle: "قسمت نمایشگاه داران - صنعت چوبی چوکال",
+   exhibitorsLogo: "🌳 چوکال",
+   exhibitorsBack: "بازگشت به خانه",
+   exhibitorsHeroTitle: "قسمت نمایشگاه داران",
+   exhibitorsHeroSubtitle: "همکاری با نمایشگاه داران و فروشندگان",
+   exhibitorsText: "مجموعه چوکال آماده همکاری با نمایشگاه داران و فروشندگان محترم در سراسر کشور می باشد.\n<br><br>\nبرای اطلاعات بیشتر و شرایط همکاری، لطفا با ما تماس بگیرید.",
+   exhibitorsFooterText: "با تشکر از اعتماد شما به چوکال - کیفیت را با چوب تجربه کنید"
   },
   
   en: {
@@ -130,6 +141,8 @@ const translations = {
     shopLink: "Online Shop",
     specialOfferTitle: "Special Discount for First Purchase",
     specialOfferSubtitle: "20% Discount + Free Shipping",
+    exhibitorsLink: "Exhibitors Section",
+    managersLink: "Managers",
     
     // Products page (products.html)
     productsTitle: "Chocal",
@@ -229,7 +242,16 @@ const translations = {
    shopHeroSubtitle: "Order our products online",
    shopComingSoon: "The online sales section will be launched soon.",
    shopContactUs: "Currently, you can contact us to place an order and inquire about prices.",
-   shopFooterText: "Thank you for your trust in Chocal - Experience quality with wood"
+   shopFooterText: "Thank you for your trust in Chocal - Experience quality with wood",
+
+   // Exhibitors page (exhibitors.html)
+   exhibitorsTitle: "Exhibitors Section - Chocal Wood Industry",
+   exhibitorsLogo: "🌳 Chocal",
+   exhibitorsBack: "Back to Home",
+   exhibitorsHeroTitle: "Exhibitors Section",
+   exhibitorsHeroSubtitle: "Collaboration with exhibitors and sellers",
+   exhibitorsText: "Chocal is ready to cooperate with respected exhibitors and sellers throughout the country.\n<br><br>\nFor more information and cooperation conditions, please contact us.",
+   exhibitorsFooterText: "Thank you for your trust in Chocal - Experience quality with wood"
   },
   
   ar: {
@@ -345,7 +367,16 @@ const translations = {
    shopHeroSubtitle: "اطلب منتجاتنا عبر الإنترنت",
    shopComingSoon: "سيتم إطلاق قسم المبيعات عبر الإنترنت قريبًا.",
    shopContactUs: "حاليًا ، يمكنك الاتصال بنا لتقديم طلب والاستفسار عن الأسعار.",
-   shopFooterText: "شكرا لثقتكم في شوكال - جربوا الجودة مع الخشب"
+   shopFooterText: "شكرا لثقتكم في شوكال - جربوا الجودة مع الخشب",
+
+   // Exhibitors page (exhibitors.html)
+   exhibitorsTitle: "قسم العارضين - صناعة الخشب شوكال",
+   exhibitorsLogo: "🌳 شوكال",
+   exhibitorsBack: "العودة إلى الرئيسية",
+   exhibitorsHeroTitle: "قسم العارضين",
+   exhibitorsHeroSubtitle: "التعاون مع العارضين والبائعين",
+   exhibitorsText: "شوكال على استعداد للتعاون مع العارضين والبائعين المحترمين في جميع أنحاء البلاد.\n<br><br>\nلمزيد من المعلومات وشروط التعاون ، يرجى الاتصال بنا.",
+   exhibitorsFooterText: "شكرا لثقتكم في شوكال - جربوا الجودة مع الخشب"
   }
 };
 
@@ -395,6 +426,11 @@ function switchLanguage(lang) {
   if (document.body.classList.contains('shop-page')) {
     translateShopPage(lang);
   }
+
+  // ترجمه صفحه نمایشگاه داران (exhibitors.html)
+  if (document.body.classList.contains('exhibitors-page')) {
+    translateExhibitorsPage(lang);
+  }
 }
 
 // ترجمه صفحه اصلی
@@ -437,6 +473,12 @@ function translateIndexPage(lang) {
   
   const contactLink = document.querySelector('#contact-link');
   if (contactLink) contactLink.innerText = t.contactLink;
+
+  const exhibitorsLink = document.querySelector('#exhibitors-link');
+  if (exhibitorsLink) exhibitorsLink.innerText = t.exhibitorsLink;
+
+  const managersLink = document.querySelector('#managers-link');
+  if (managersLink) managersLink.innerText = t.managersLink;
   
   // تخفیف ویژه
   const offerTitle = document.querySelector('.special-offer .offer-text');
@@ -736,4 +778,20 @@ function translateShopPage(lang) {
   sectionText.innerHTML = `${t.shopComingSoon}<br><br>${t.shopContactUs}`;
 
   document.querySelector('.footer-text').innerText = t.shopFooterText;
+}
+
+// ترجمه صفحه نمایشگاه داران
+function translateExhibitorsPage(lang) {
+  const t = translations[lang];
+  document.title = t.exhibitorsTitle;
+
+  document.querySelector('.logo').innerText = t.exhibitorsLogo;
+  document.querySelector('.back-btn').innerText = t.exhibitorsBack;
+  document.querySelector('.hero-title').innerText = t.exhibitorsHeroTitle;
+  document.querySelector('.hero-subtitle').innerText = t.exhibitorsHeroSubtitle;
+  
+  const sectionText = document.querySelector('.section-text');
+  sectionText.innerHTML = t.exhibitorsText;
+
+  document.querySelector('.footer-text').innerText = t.exhibitorsFooterText;
 }

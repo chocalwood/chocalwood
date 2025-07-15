@@ -198,7 +198,8 @@
     document.addEventListener('DOMContentLoaded', () => {
         // --- CONFIG & STATE ---
         const productKeys = Array.from({length: 21}, (_, i) => `bed${i + 1}`);
-        const products = productKeys.map(key => allProducts[key]).filter(Boolean);
+        const allProductsFromStorage = JSON.parse(localStorage.getItem('allProducts')) || allProducts;
+        const products = productKeys.map(key => allProductsFromStorage[key]).filter(Boolean);
         let favorites = [];
         let currentProduct = null;
 

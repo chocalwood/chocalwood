@@ -324,9 +324,10 @@
         const lang = localStorage.getItem('selectedLanguage') || 'fa';
         const t = translations[lang];
 
-        for (const productId in allProducts) {
-            if (productId.startsWith('tablo') && allProducts[productId].id) {
-                const product = allProducts[productId];
+        const allProductsFromStorage = JSON.parse(localStorage.getItem('allProducts')) || allProducts;
+        for (const productId in allProductsFromStorage) {
+            if (productId.startsWith('tablo') && allProductsFromStorage[productId].id) {
+                const product = allProductsFromStorage[productId];
                 if(product.type === 'دسته بندی') continue;
 
                 const productName = t.productNames[product.id] || product.name;

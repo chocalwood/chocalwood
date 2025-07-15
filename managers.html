@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بخش مدیران - صنعت چوبی چوکال</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="shared.css">
+    <style>
+      /* Styles specific to managers.html */
+      .header {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          background: rgba(0, 0, 0, 0.9);
+          backdrop-filter: blur(15px);
+          z-index: 1000;
+          padding: 15px 0;
+          border-bottom: 1px solid rgba(255, 204, 102, 0.2);
+      }
+      .header-content {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 20px;
+      }
+      .logo {
+          font-size: 1.8rem;
+          font-weight: bold;
+          color: #ffcc66;
+          text-shadow: 0 0 10px rgba(255, 204, 102, 0.5);
+      }
+      .back-btn {
+          background: linear-gradient(135deg, #ffcc66, #f59e0b);
+          color: #1a1a1a;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 25px;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+          display: inline-block;
+      }
+      .back-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(255, 204, 102, 0.4);
+      }
+      .main-content {
+          padding-top: 100px;
+          min-height: 100vh;
+          position: relative;
+          z-index: 1;
+      }
+      .password-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.95);
+          backdrop-filter: blur(10px);
+          z-index: 2000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          color: white;
+          text-align: center;
+      }
+      .password-modal h2 {
+          font-size: 2rem;
+          color: #ffcc66;
+          margin-bottom: 20px;
+      }
+      .password-modal input {
+          padding: 15px;
+          font-size: 1.2rem;
+          border-radius: 10px;
+          border: 2px solid #ffcc66;
+          background: rgba(255,255,255,0.1);
+          color: white;
+          margin-bottom: 20px;
+          text-align: center;
+      }
+      .password-modal button {
+          padding: 10px 30px;
+          font-size: 1.2rem;
+          border-radius: 10px;
+          border: none;
+          background: #ffcc66;
+          color: #1a1a1a;
+          cursor: pointer;
+          transition: all 0.3s ease;
+      }
+      .password-modal button:hover {
+          transform: scale(1.05);
+      }
+      .password-error {
+          color: #ff6b6b;
+          margin-top: 15px;
+          display: none;
+      }
+      .admin-panel {
+          max-width: 800px;
+          margin: 40px auto;
+          padding: 40px;
+          background: rgba(255,255,255,0.05);
+          border-radius: 15px;
+      }
+      .admin-panel h2 {
+          color: #ffcc66;
+          margin-bottom: 30px;
+      }
+      .form-group {
+          margin-bottom: 20px;
+      }
+      .form-group label {
+          display: block;
+          margin-bottom: 10px;
+          color: #ccc;
+      }
+      .form-group input {
+          width: 100%;
+          padding: 10px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+      }
+      .form-group button {
+          padding: 10px 20px;
+          background: #ffcc66;
+          color: #1a1a1a;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+      }
+      #new-exhibitor-code {
+          margin-top: 20px;
+          padding: 15px;
+          background: rgba(0,0,0,0.2);
+          border-radius: 5px;
+          color: #ffcc66;
+          font-weight: bold;
+          text-align: center;
+          display: none;
+      }
+      #exhibitors-list {
+          margin-top: 40px;
+      }
+      #exhibitors-list h3 {
+          color: #ffcc66;
+          margin-bottom: 20px;
+      }
+      #exhibitors-list table {
+          width: 100%;
+          border-collapse: collapse;
+          color: white;
+      }
+      #exhibitors-list th, #exhibitors-list td {
+          padding: 10px;
+          border: 1px solid rgba(255,255,255,0.2);
+          text-align: right;
+      }
+      #exhibitors-list th {
+          background: rgba(255,204,102,0.2);
+      }
+    </style>
+</head>
+<body class="page-enter managers-page">
+    <!-- افکت ذرات -->
+    <div class="particles" id="particles"></div>
+
+    <div class="password-modal" id="password-modal">
+        <h2>ورود به بخش مدیران</h2>
+        <p>لطفا رمز عبور مدیریت را وارد کنید</p>
+        <input type="password" id="password-input" placeholder="رمز عبور">
+        <button id="password-submit">ورود</button>
+        <p class="password-error" id="password-error">رمز عبور صحیح نمی باشد</p>
+    </div>
+
+    <!-- هدر -->
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">🌳 چوکال</div>
+            <a href="index.html" class="back-btn">بازگشت به خانه</a>
+        </div>
+    </div>
+
+    <!-- محتوای اصلی -->
+    <div class="main-content" style="display: none;">
+        <div class="admin-panel">
+            <h2>افزودن نمایشگاه دار جدید</h2>
+            <div class="form-group">
+                <label for="exhibitor-name">نام نمایشگاه دار</label>
+                <input type="text" id="exhibitor-name" placeholder="مثال: آقای محمد رضا غلامی">
+            </div>
+            <div class="form-group">
+                <button id="add-exhibitor-btn">افزودن و ایجاد کد</button>
+            </div>
+            <div id="new-exhibitor-code"></div>
+        </div>
+
+        <div class="admin-panel">
+            <h2>افزودن محصول جدید</h2>
+            <div class="form-group">
+                <label for="product-category">دسته بندی</label>
+                <select id="product-category">
+                    <option value="bed">سرویس خواب</option>
+                    <option value="tv">میز تلویزیون</option>
+                    <option value="jak">جاکفشی</option>
+                    <option value="bar">بار قهوه</option>
+                    <option value="sofa">جلو مبلی</option>
+                    <option value="tablo">اکسسوری و تابلو</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="product-name">نام محصول</label>
+                <input type="text" id="product-name" placeholder="مثال: سرویس خواب مدل کلاسیک">
+            </div>
+            <div class="form-group">
+                <label for="product-type">نوع/جنس محصول</label>
+                <input type="text" id="product-type" placeholder="مثال: چوب راش">
+            </div>
+            <div class="form-group">
+                <label for="product-image">عکس محصول</label>
+                <input type="file" id="product-image" accept="image/*">
+            </div>
+            <div class="form-group">
+                <button id="add-product-btn">افزودن محصول</button>
+            </div>
+            <div id="new-product-message" style="display: none; color: #2ecc71; margin-top: 15px;"></div>
+        </div>
+
+        <div class="admin-panel" id="exhibitors-list">
+            <h3>لیست نمایشگاه داران</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>نام</th>
+                        <th>کد</th>
+                    </tr>
+                </thead>
+                <tbody id="exhibitors-table-body">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-panel" id="products-list">
+            <h3>لیست محصولات</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>دسته بندی</th>
+                        <th>نام</th>
+                        <th>نوع</th>
+                        <th>عکس</th>
+                    </tr>
+                </thead>
+                <tbody id="products-table-body">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script src="exhibitors-db.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const masterPassword = "admin123";
+            const passwordModal = document.getElementById('password-modal');
+            const passwordInput = document.getElementById('password-input');
+            const passwordSubmit = document.getElementById('password-submit');
+            const passwordError = document.getElementById('password-error');
+            const mainContent = document.querySelector('.main-content');
+            const addExhibitorBtn = document.getElementById('add-exhibitor-btn');
+            const exhibitorNameInput = document.getElementById('exhibitor-name');
+            const newExhibitorCodeDiv = document.getElementById('new-exhibitor-code');
+            const exhibitorsTableBody = document.getElementById('exhibitors-table-body');
+            const addProductBtn = document.getElementById('add-product-btn');
+            const productsTableBody = document.getElementById('products-table-body');
+
+            function renderExhibitors() {
+                const currentExhibitors = JSON.parse(localStorage.getItem('validExhibitors')) || validExhibitors;
+                exhibitorsTableBody.innerHTML = '';
+                for (const code in currentExhibitors) {
+                    const name = currentExhibitors[code];
+                    const row = `<tr><td>${name}</td><td>${code}</td></tr>`;
+                    exhibitorsTableBody.innerHTML += row;
+                }
+            }
+
+            function renderProducts() {
+                const currentProducts = JSON.parse(localStorage.getItem('allProducts')) || allProducts;
+                productsTableBody.innerHTML = '';
+                for (const key in currentProducts) {
+                    // We only want to show individual products, not categories
+                    if(currentProducts[key].id) {
+                        const product = currentProducts[key];
+                        const category = key.replace(/[0-9]/g, '');
+                        const row = `<tr><td>${category}</td><td>${product.name}</td><td>${product.type}</td><td>${product.image}</td></tr>`;
+                        productsTableBody.innerHTML += row;
+                    }
+                }
+            }
+
+            passwordSubmit.addEventListener('click', function() {
+                if (passwordInput.value === masterPassword) {
+                    passwordModal.style.display = 'none';
+                    mainContent.style.display = 'block';
+                    renderExhibitors();
+                    renderProducts();
+                } else {
+                    passwordError.style.display = 'block';
+                }
+            });
+
+            addExhibitorBtn.addEventListener('click', function() {
+                const exhibitorName = exhibitorNameInput.value.trim();
+                if (exhibitorName) {
+                    const newCode = `CHKL-EXH-${Math.floor(Math.random() * 900) + 100}`;
+                    
+                    let currentExhibitors = JSON.parse(localStorage.getItem('validExhibitors')) || validExhibitors;
+                    currentExhibitors[newCode] = exhibitorName;
+
+                    localStorage.setItem('validExhibitors', JSON.stringify(currentExhibitors));
+
+                    newExhibitorCodeDiv.innerHTML = `کد جدید برای ${exhibitorName}: <strong>${newCode}</strong>`;
+                    newExhibitorCodeDiv.style.display = 'block';
+                    exhibitorNameInput.value = '';
+                    
+                    console.log("Updated exhibitors:", currentExhibitors);
+                    renderExhibitors();
+                }
+            });
+
+            addProductBtn.addEventListener('click', function() {
+                const category = document.getElementById('product-category').value;
+                const name = document.getElementById('product-name').value.trim();
+                const type = document.getElementById('product-type').value.trim();
+                const imageFile = document.getElementById('product-image').files[0];
+                const newMessageDiv = document.getElementById('new-product-message');
+
+                if (category && name && type && imageFile) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const imageDataUrl = e.target.result;
+                        let currentProducts = JSON.parse(localStorage.getItem('allProducts')) || allProducts;
+                        
+                        // Find the next available ID for the category
+                        let newIdNumber = 1;
+                        while(currentProducts[`${category}${newIdNumber}`]) {
+                            newIdNumber++;
+                        }
+                        const newId = `${category}${newIdNumber}`;
+
+                        currentProducts[newId] = { id: newId, name: name, type: type, image: imageDataUrl };
+                        localStorage.setItem('allProducts', JSON.stringify(currentProducts));
+
+                        newMessageDiv.textContent = `محصول جدید با موفقیت اضافه شد: ${name}`;
+                        newMessageDiv.style.display = 'block';
+
+                        // Clear form
+                        document.getElementById('product-name').value = '';
+                        document.getElementById('product-type').value = '';
+                        document.getElementById('product-image').value = '';
+
+                        renderProducts();
+                    };
+                    reader.readAsDataURL(imageFile);
+                } else {
+                    newMessageDiv.textContent = 'لطفا تمام فیلدها را پر کنید.';
+                    newMessageDiv.style.color = '#ff6b6b';
+                    newMessageDiv.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

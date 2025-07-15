@@ -197,7 +197,8 @@
     document.addEventListener('DOMContentLoaded', () => {
         // --- CONFIG & STATE ---
         const productKeys = ['sofa1', 'sofa2', 'sofa3', 'sofa4', 'sofa5', 'sofa6'];
-        const products = productKeys.map(key => allProducts[key]).filter(Boolean);
+        const allProductsFromStorage = JSON.parse(localStorage.getItem('allProducts')) || allProducts;
+        const products = productKeys.map(key => allProductsFromStorage[key]).filter(Boolean);
         let favorites = [];
         let currentProduct = null;
 
